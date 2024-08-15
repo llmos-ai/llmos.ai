@@ -25,8 +25,11 @@ EOF
 # if not specified.
 kubernetesVersion: v1.29.7+k3s1
 
-# The LLMOS operator version to be installed or a channel with "latest" or "dev"
+# The LLMOS operator version to be installed 
 llmosOperatorVersion: v0.1.0
+
+# LLMOS chart repo with "latest" or "dev", default to latest
+chartRepo: latest
 
 # Values set on the LLMOS Operator Helm chart. Refer to
 # https://github.com/llmos-ai/llmos-operator/blob/main/deploy/charts/llmos-operator/values.yaml

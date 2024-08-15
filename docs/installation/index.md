@@ -16,7 +16,7 @@ A unique token is generated for the new cluster, or you can manually assign one.
 To bootstrap a new cluster, run the following command on a bare-metal server or virtual machine:
 
 ```shell
-curl -sfL https://get-llmos.1block.ai | sh -s --cluster-init --token mytoken
+curl -sfL https://get-llmos.1block.ai | sh -s - --cluster-init --token mytoken
 ```
 
 ### Join a Cluster
@@ -25,7 +25,7 @@ To add more nodes to the cluster, you can assign them the **server** role to inc
 To join a node, you will need the `server-url` and the cluster `token`.
 
 ```shell
-curl -sfL https://get-llmos.1block.ai | sh -s --server https://server-url:6443 --token mytoken
+curl -sfL https://get-llmos.1block.ai | sh -s - --server https://server-url:6443 --token mytoken
 ```
 
 ### Node Roles
@@ -55,7 +55,7 @@ Environment variables prefixed with `LLMOS_` are preserved for the systemd servi
 To pass environment variables to the installation script, add the `LLMOS_` prefix environment variables just like below:
 
 ```shell
-curl -sfL https://get-llmos.1block.ai | LLMOS_DEBUG=true LLMOS_DEBUG_LEVEL=9 sh -s
+curl -sfL https://get-llmos.1block.ai | LLMOS_DEBUG=true LLMOS_DEBUG_LEVEL=9 sh -s -
 ```
 
 For more detailed information about LLMOS configuration options, visit the [LLMOS Configurations page](/docs/installation/configurations).
@@ -77,5 +77,5 @@ The following environment variables are used exclusively with the LLMOS installa
 For example, if you already have the LLMOS binary installed in `/usr/local/bin/llmos` and you want to skip the download step, you can set the following environment variables:
 
 ```shell
-curl -sfL https://get-llmos.1block.ai | INSTALL_LLMOS_SKIP_DOWNLOAD=true sh -s
+curl -sfL https://get-llmos.1block.ai | INSTALL_LLMOS_SKIP_DOWNLOAD=true sh -s -
 ```

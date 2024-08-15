@@ -12,12 +12,12 @@ This guide will help you quickly launch a LLMOS cluster with default bootstrap o
 LLMOS can be installed to a bare-metal server or a virtual machine. To bootstrap a new cluster, follow the steps below:
 
 ```shell
-curl -sfL https://get-llmos.1block.ai | sh -s --cluster-init --token mytoken
+curl -sfL https://get-llmos.1block.ai | sh -s - --cluster-init --token mytoken
 ```
 
 Additionally, you can run the following command to add a new worker node to an existing cluster:
 ```shell
-curl -sfL https://get-llmos.1block.ai | LLMOS_SERVER=https://server-url:6443 LLMOS_TOKEN=mytoken sh -s
+curl -sfL https://get-llmos.1block.ai | LLMOS_SERVER=https://server-url:6443 LLMOS_TOKEN=mytoken sh -s -
 ```
 
 ## Getting Started
