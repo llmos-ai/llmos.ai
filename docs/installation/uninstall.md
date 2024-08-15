@@ -35,7 +35,7 @@ kubectl delete node $NODE_NAME
 If you installed LLMOS manually, you can uninstall it by running the following script on the target node:
 
 ```shell
-curl -sfL https://raw.githubusercontent.com/llmos-ai/llmos/main/uninstall.sh | sh -s
+curl -sfL https://raw.githubusercontent.com/llmos-ai/llmos/main/uninstall.sh | sh -
 ```
 
 And then delete the node from the cluster as described in the above section. If you are in an air-gap environment, you can copy and paste the [script](https://raw.githubusercontent.com/llmos-ai/llmos/main/uninstall.sh) to your local path and run it manually with `sh ./uninstall.sh`. 
