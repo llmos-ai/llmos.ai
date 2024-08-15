@@ -1,0 +1,8 @@
+{
+  "label": "Storage",
+  "position": 50,
+  "link": {
+    "type": "generated-index",
+    "description": "storage user guide"
+  }
+}

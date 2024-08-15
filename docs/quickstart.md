@@ -22,7 +22,7 @@ curl -sfL https://get-llmos.1block.ai | LLMOS_SERVER=https://server-url:6443 LLM
 
 ## Getting Started
 
-After installing LLMOS, you can access the dashboard by navigating to `https://<server-ip>:30443` in your web browser.
+After installing LLMOS, you can access the dashboard by navigating to `https://<server-ip>:8443` in your web browser.
 
 The default username and password is `admin` and `password`, you can change it in the dashboard after login.
 
