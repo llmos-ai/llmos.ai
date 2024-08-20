@@ -7,7 +7,7 @@ LLMOS manages your workload by deploying containers into Pods to run on Nodes. A
 
 The management node hosts both system components, such as the API server, controller-manager, and etcd, as well as user workloads. In contrast, the worker node is dedicated primarily to running user workloads and only the minimal system-required DaemonSets.
 
-Users can view and manage the nodes in the cluster through the **ML Management > Nodes** page.
+Users can view and manage the nodes in the cluster through the **LLM Management > Nodes** page.
 
 
 

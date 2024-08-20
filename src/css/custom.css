@@ -58,9 +58,9 @@
   }
 }
 
-.container {
-  padding: 3rem 0 !important;
-}
+/*.container {*/
+/*  padding: 3rem 0 !important;*/
+/*}*/
 
 .footer .container {
   background-image: url('/img/pattern-lg-light.svg');
@@ -106,11 +106,7 @@ img[alt=mlvsllm] {
   margin-right: auto;
 }
 
-.feature-svg:last-child {
+.feature-svg {
   width: 200px;
   height: 200px;
-}
-
-.feature-svg:last-child {
-  /*padding: 20px;*/
 }
