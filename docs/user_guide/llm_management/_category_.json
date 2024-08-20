@@ -1,0 +1,8 @@
+{
+  "label": "LLM Management",
+  "position": 50,
+  "link": {
+    "type": "generated-index",
+    "description": "LLM management user guide in LLMOS"
+  }
+}
