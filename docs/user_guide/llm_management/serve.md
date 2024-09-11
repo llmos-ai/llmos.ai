@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 4
 title: Model Serving
 ---
 
@@ -108,7 +108,7 @@ print("Completion result:", completion)
 ```
 
 #### Notebook Interaction
-You can also interact with model services using the Jupyter [Notebook](./notebooks), which is a great way to explore the model's capabilities with a rich interactive output like HTML, graphs, and more.
+You can also interact with model services using the Jupyter [Notebook](notebooks.md), which is a great way to explore the model's capabilities with a rich interactive output like HTML, graphs, and more.
 
 :::note
 Within the LLMOS cluster, you can connect to the model service using the internal DNS name. For example, `http://modelservice-name.default.svc.cluster.local:8000`.
