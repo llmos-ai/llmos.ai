@@ -5,7 +5,7 @@ title: API Keys
 
 LLMOS support authentication using API keys, each user can create and manage their own API keys through the **Account & API Keys** page on the top right menu.
 
-![Account & API Keys](/img/docs/user-top-nav-menu.png)
+![Account & API Keys](/img/docs/auth-apikeys-top-nav-menu.png)
 
 Authentication with API Keys are composed of the following components:
 
@@ -21,16 +21,19 @@ Authentication with API Keys are composed of the following components:
 ### Creating an API Key
 
 1. Click **Create API Key** on the **Account & API Keys** page.
-1. *(Optional)* Enter a description for the API key to identify the purpose of the key.
-1. Select an expiration period, shorter expiration periods usually are more secure.
-    - The API key won't be valid after expiration. 
-    - The maximum TTL for API keys is bound to the system setting `auth-token-max-ttl-minutes` and is default to 90 days.
-1. Click **Create** and your API Key is created. 
-
-The **Access Key** and **Secret Key** can be sent as the username and password for HTTP Basic auth to authorize requests. You can also combine them to use as a **Bearer Token**:
-
-![API Keys](/img/docs/user-create-api-key.png)
+1. *(Optional)* Enter a **Description** for the API key to identify the purpose of the key.
+1. Config the expiration period, shorter expiration periods usually are more secure.
+    - The maximum TTL for API keys is bound to the system setting `auth-token-max-ttl-minutes` and is default to **90 days**.
+    - Your API key won't be valid after expiration, it will be automatically deleted in a scheduled routine or you can delete it manually.
+![API Keys](/img/docs/auth-apikey-create.png)
+1. Click **Create** to create the API Key, and you will see the generated API key. 
+![API Keys](/img/docs/auth-generated-apikey.png)
 
 :::info Note
 You can only see the generated API key once upon creation, save your API keys somewhere safe. If you lose it, you'll need to create a new API key.
 :::
+
+## Deleting an API Key
+1. Find the API key you want to delete on the **Account & API Keys** page.
+2. Click **Delete** on the API key row.
+3. Your API key will be removed after confirmation, and the token will no longer be valid.
