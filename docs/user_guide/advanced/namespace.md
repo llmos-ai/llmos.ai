@@ -3,23 +3,22 @@ sidebar_position: 1
 title: Namespace
 ---
 
-Namespaces is a special resource provide a mechanism for isolating groups of resources within a single cluster. Names of resources need to be unique within a namespace, but not across namespaces. Namespace-based scoping is applicable only for namespaced objects (e.g. Notebooks, Model Services, etc.) and not for cluster-wide objects (e.g. Nodes, Storage Classes, etc.).
+Namespaces are a special resource that provide a mechanism for isolating groups of resources within a single cluster. Resource names need to be unique within a namespace, but not across different namespaces. Namespace-based scoping applies only to namespaced objects (e.g., Notebooks, Model Services) and does not affect cluster-wide objects (e.g., Nodes, Storage Classes).
 
 :::note
-For a production and independent environment, consider not using the `default` or `llmos-public` namespace. Instead, make other namespaces and use those.
+For production and isolated environments, avoid using the `default` or `llmos-public` namespaces. Instead, create and use custom namespaces.
 :::
-
 
 ### System Namespaces
 
-LLMOS reserves some namespaces for system components. These namespaces are not intended for use by end users.
-- `ceph-system`: This namespace is used for built-in system Ceph storage.
-- `kube-system`: This namespace is used for Kubernetes system components.
-- `kube-node-lease`: This namespace is used for Kubernetes node lease.
-- `kube-public`: This namespace is used for Kubernetes public resources.
-- `llmos-system`: This namespace is used for LLMOS system components.
-- `system-upgrade`: This namespace is used for LLMOS system upgrade components.
+LLMOS reserves certain namespaces for system components. These namespaces are not intended for end-user use.
 
-:::note
-`llmos-public` is a special namespace that is used for public resources and can be accessed by all end users.
-:::
+- `ceph-system`: Used for built-in Ceph storage.
+- `kube-system`: Reserved for Kubernetes system components.
+- `kube-node-lease`: Used for managing Kubernetes node leases.
+- `kube-public`: For Kubernetes public resources.
+- `llmos-system`: Dedicated to LLMOS system components.
+- `system-upgrade`: Used for system upgrade service.
+
+### Public Namespace
+The `llmos-public` namespace is a special namespace designed for public resources accessible by all end users. By default, all resources in this namespace are publicly accessible(**Read Only**).

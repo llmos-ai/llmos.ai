@@ -2,40 +2,41 @@
 sidebar_position: 1
 title: Uninstalling LLMOS
 ---
+If you installed LLMOS using the installation script, an uninstallation script is automatically generated during installation.
+
+If you plan to rejoin a node to an existing cluster after uninstalling and reinstalling, make sure to delete the node from the cluster first. This ensures the node password is properly removed. Follow the steps below for more details.
+
 :::warning
+Running the uninstallation script will delete local cluster data, configuration files, scripts, and CLI tools. Please ensure you back up any important data before proceeding.
 
-Uninstalling script will delete the local cluster data, configuration, and all of the scripts and CLI tools. Please make sure to back up any important data before uninstalling.
-
-Also, it will not remove any data from the external datastore.
-
+Note that this will not remove any data from external datastores.
 :::
-
-If you installed LLMOS using the installation script, an uninstallation script was generated automatically during installation.
-
-If you are planning on rejoining a node to an existing cluster after uninstalling and reinstalling, be sure to delete the node from the cluster to ensure that the node password is removed correctly. See the following steps for more details.
-
 
 ## Uninstalling Steps
 
-Uninstalling LLMOS is a two-step process:
-1. Uninstall LLMOS from the node
+Uninstalling LLMOS involves two steps:
 
-```shell
-sudo llmos-uninstall.sh
-```
-
-2. Delete the node from the cluster either via the `LLMOS dashboard > Nodes` page or using the `kubectl` command:
-
-```shell
-kubectl delete node $NODE_NAME
-```
+1. Run the uninstallation script on the node to clean up the system:
+    ```shell
+    sudo llmos-uninstall.sh
+    ```
+1. Delete the node from the cluster, either from the `LLMOS Dashboard > Nodes` page or by running the following kubectl command:
+    ```shell 
+    kubectl delete node $NODE_NAME
+    ```
+   ![delete node](/img/docs/node-delete.png)
 
 ## Manual Uninstall
 
-If you installed LLMOS manually, you can uninstall it by running the following script on the target node:
+If you manually installed LLMOS, you can uninstall it by running the following script on the target node:
 
 ```shell
 curl -sfL https://raw.githubusercontent.com/llmos-ai/llmos/main/uninstall.sh | sh -
 ```
 
-And then delete the node from the cluster as described in the above section. If you are in an air-gap environment, you can copy and paste the [script](https://raw.githubusercontent.com/llmos-ai/llmos/main/uninstall.sh) to your local path and run it manually with `sh ./uninstall.sh`. 
+Afterward, delete the node from the cluster as described in the previous section. 
+
+If you are working in an air-gapped environment, save the [uninstall script](https://raw.githubusercontent.com/llmos-ai/llmos/main/uninstall.sh) to your local path, and run it manually with: 
+```
+sudo sh ./uninstall.sh
+````

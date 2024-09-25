@@ -7,17 +7,28 @@ title: Quickstart
 
 This guide will help you quickly launch a LLMOS cluster with default bootstrap options. The [installation](./installation) section covers more details about the bootstrap configuration options.
 
-## Install Script
+## Installation Script
 
-LLMOS can be installed to a bare-metal server or a virtual machine. To bootstrap a new cluster, follow the steps below:
+LLMOS can be installed to a bare-metal server or a virtual machine. To bootstrap a **new cluster**, follow the steps below:
 
 ```shell
 curl -sfL https://get-llmos.1block.ai | sh -s - --cluster-init --token mytoken
 ```
 
-Additionally, you can run the following command to add a new worker node to an existing cluster:
+You can run `journalctl -u llmos -f` to watch logs.
+
+After the installation completes, it is optional to add a new worker node to the cluster with the following command:
 ```shell
 curl -sfL https://get-llmos.1block.ai | LLMOS_SERVER=https://server-url:6443 LLMOS_TOKEN=mytoken sh -s -
+```
+
+### Config Proxy
+If you environment needs to access the internet through a proxy, you can set the `HTTP_PROXY` and `HTTPS_PROXY` environment variables to configure the installation script to use the proxy.
+
+```shell
+export HTTP_PROXY=http://proxy.example.com:8080
+export HTTPS_PROXY=http://proxy.example.com:8080
+export NO_PROXY=127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
 ```
 
 ## Getting Started

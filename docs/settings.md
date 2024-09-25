@@ -22,19 +22,33 @@ Only admin users can manage these settings.
 |---------|----------------|--------------------------------------------------|
 | Integer | 720 (12 hours) | Custom TTL (in minutes) on a user auth session.  |
 
+### `default-notebook-images`
+| Type        | Default | Description                                                                                                |
+|-------------|---------|------------------------------------------------------------------------------------------------------------|
+| JSON String | ""      | Default list of images to use for notebooks. JSON keys are image tags, values are list of notebook images. |
+
+### `log-level`
+| Type    | Default | Description                                    |
+|---------|---------|------------------------------------------------|
+| String  | info    | Define the log level for the LLMOS API server. |
 
 ### `server-url`
 | Type   | Default | Description                                                                                          |
 |--------|---------|------------------------------------------------------------------------------------------------------|
 | String | ""      | Default Dashboard install url. Must be HTTPS. All nodes in your cluster must be able to reach this.  |
 
-### `default-notebook-images`
-| Type        | Default | Description                                                                                                |
-|-------------|---------|------------------------------------------------------------------------------------------------------------|
-| JSON String | ""      | Default list of images to use for notebooks. JSON keys are image tags, values are list of notebook images. |
+### `upgrade-check-enabled`
+| Type | Default | Description                               |
+|------|---------|-------------------------------------------|
+| Bool | true    | Enable/disable automatic upgrade checks.  |
+
+### `upgrade-check-url`
+| Type   | Default                                       | Description                                                                             |
+|--------|-----------------------------------------------|-----------------------------------------------------------------------------------------|
+| String | `https://llmos-upgrade.1block.ai/v1/versions` | Default LLMOS upgrade check url. Only used when the upgrade-checker-enabled is enabled. |
+
 
 ## UI Settings
-
 ### `ui-index`
 | Type   | Default                                                  | Description                                        |
 |--------|----------------------------------------------------------|----------------------------------------------------|

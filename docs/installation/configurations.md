@@ -3,10 +3,11 @@ sidebar_position: 1
 title: LLMOS Configurations
 ---
 
-LLMOS provides a set of configuration options that can be set in the `/etc/llmos/config.yaml` file, create it manually if it does not exist.
+LLMOS provides a set of configuration options that can be set in the `/etc/llmos/config.yaml` file. If the file doesn't exist, you can create it manually.
+
+### Minimum Configuration
 
 ```shell
-## e.g., minimum cluster-init node configuration
 mkdir -p /etc/llmos
 cat > /etc/llmos/config.yaml << EOF
 role: cluster-init
@@ -14,44 +15,38 @@ token: mytoken
 EOF
 ```
 
-### Example of Full Configurations
+### Full Configuration Example
 
 ```yaml
-########################################################
-# The below parameters apply to cluster-init role only #
-########################################################
+################################################################
+# The following parameters apply to the cluster-init role only #
+################################################################
 
-# The Kubernetes version to be installed. This is default to use the latest stable k3s version
-# if not specified.
-kubernetesVersion: v1.29.7+k3s1
-
-# The LLMOS operator version to be installed 
+# LLMOS Operator version to be installed
 llmosOperatorVersion: v0.1.0
 
-# LLMOS chart repo with "latest" or "dev", default to latest
+# LLMOS chart repository, set to "latest" or "dev". Defaults to latest.
 chartRepo: latest
 
-# Values set on the LLMOS Operator Helm chart. Refer to
-# https://github.com/llmos-ai/llmos-operator/blob/main/deploy/charts/llmos-operator/values.yaml
-# for possible values.
-operatorValues:
-  # Below are the default values set
-  operator:
-      apiserver:
-        replicaCount: 1
+# Kubernetes version to be installed. Defaults to a stable k3s version if not specified.
+kubernetesVersion: v1.30.5+k3s1
 
-# Addition SANs (hostnames) to be added to the generated TLS certificate that
-# served on port 6443.
+# Custom values for the LLMOS Operator Helm chart.
+# See https://github.com/llmos-ai/llmos-operator/blob/main/deploy/charts/llmos-operator/values.yaml
+operatorValues:
+  # Default values
+  operator:
+    apiserver:
+      replicaCount: 1
+
+# Additional SANs (hostnames) for the TLS certificate generated for port 6443.
 tlsSans:
 - additionalhostname.example.com
 
-# Generic commands to run before bootstrapping the node.
+# Commands to run before bootstrapping the node.
 preInstructions:
-  - name: something
-    # This image will be extracted to a temporary folder and
-    # set as the current working dir. The command will not run
-    # contained or chrooted, this is only a way to copy assets
-    # to the host. This is parameter is optional
+  - name: custom-pre-task
+    # Image to extract and set as the current working directory (optional)
     image: custom/image:1.1.1
     # Environment variables to set
     env:
@@ -60,14 +55,14 @@ preInstructions:
     args:
     - arg1
     - arg2
-    # Command to run
+    # Command to execute
     command: /bin/dosomething
-    # Save output to /var/lib/llmos/plan/plan-output.json
+    # Save output to /var/lib/llmos/plan/plan-output.json (optional)
     saveOutput: false
 
-# Generic commands to run after bootstrapping the node.
+# Commands to run after bootstrapping the node.
 postInstructions:
-  - name: something
+  - name: custom-post-task
     env:
     - FOO=BAR
     args:
@@ -76,59 +71,61 @@ postInstructions:
     command: /bin/dosomething
     saveOutput: false
 
-# Custom Kubernetes resources that will be created once LLMOS operator is bootstrapped
+# Custom Kubernetes resources to create after the LLMOS operator is bootstrapped.
 resources:
-- kind: ConfigMap
-  apiVersion: v1
-  metadata:
-    name: random
-  data:
-    key: value
+  - kind: ConfigMap
+    apiVersion: v1
+    metadata:
+      name: random
+    data:
+      key: value
 
-# Contents of the registries.yaml that will be used by k3s/RKE2. The structure
-# is documented at https://rancher.com/docs/k3s/latest/en/installation/private-registry/
+# Content for the `registries.yaml` file used by k3s.
+# Refer to https://rancher.com/docs/k3s/latest/en/installation/private-registry/ for details.
 registries: {}
 
-# The default registry used for all llmos-operator container images. For more information
-# refer to https://github.com/llmos-ai/llmos-operator/blob/991809f8c480185bc977edd2ed7a2da54749f886/deploy/charts/llmos-operator/values.yaml#L7-L17
+# Default registry for LLMOS operator container images.
+# More details: https://github.com/llmos-ai/llmos-operator/blob/main/deploy/charts/llmos-operator/values.yaml
 globalImageRegistry: someprefix.example.com:5000
 
-# Advanced: The system agent installer image used for Kubernetes
+# Advanced: Override the Kubernetes system agent installer image.
 runtimeInstallerImage: ...
 
-# Advanced: The system agent installer image used for LLMOS operator
+# Advanced: Override the LLMOS operator installer image.
 llmosInstallerImage: ...
 
+###############################################
+# The following parameters apply to all roles #
+###############################################
 
-###########################################
-# The below parameters apply to all roles #
-###########################################
-
-# The URL for a node to join an LLMOS cluster.
+# URL for joining a node to the LLMOS cluster.
 server: https://server-url:6443
 
-# A shared secret to join nodes to the cluster
+# Shared secret for joining nodes to the cluster.
 token: mytoken
 
-# The role of this node.  Every cluster must start with one node as role=cluster-init.
-# After that nodes can be joined using the server role for control-plane nodes and
-# agent role for worker only nodes.  The server/agent terms correspond to the server/agent
-# terms in k3s and RKE2
+# Role of this node. The cluster must start with one node as `role=cluster-init`.
+# Additional nodes can join using `server` for control-plane nodes, or `agent` for worker nodes.
+# These roles align with the server/agent terms used by k3s.
 role: cluster-init,server,agent
-# The Kubernetes node name that will be set
+
+# Set the Kubernetes node name.
 nodeName: custom-hostname
-# The IP address that will be set in Kubernetes for this node
+
+# External IP address for the node in Kubernetes.
 address: 123.123.123.123
-# The internal IP address that will be used for this node
+
+# Internal IP address for the node.
 internalAddress: 123.123.123.124
-# Taints to apply to this node upon creation
+
+# Taints to apply to the node upon creation.
 taints:
 - dedicated=special-user:NoSchedule
-# Labels to apply to this node upon creation
+
+# Labels to apply to the node upon creation.
 labels:
 - key=value
 
-# Advanced: Arbitrary configuration that will be placed in /etc/rancher/k3s/config.yaml.d/40-llmos.yaml
-# or /etc/rancher/rke2/config.yaml.d/40-llmos.yaml
+# Advanced: Arbitrary configuration to be placed in `/etc/rancher/k3s/config.yaml.d/40-llmos.yaml`.
 extraConfig: {}
 ```
