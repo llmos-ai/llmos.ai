@@ -28,6 +28,11 @@ To join a node, you will need the `server-url` and the cluster `token`.
 curl -sfL https://get-llmos.1block.ai | sh -s - --server https://server-url:6443 --token mytoken
 ```
 
+:::note
+If you have already configured those options using the [LLMOS Configuration](/docs/installation/configurations) file, you can just run the installation script with:
+`curl -sfL https://get-llmos.1block.ai | sh -` .
+:::
+
 ### Node Roles
 
 LLMOS will bootstrap a node with one of the following roles:
@@ -37,20 +42,29 @@ LLMOS will bootstrap a node with one of the following roles:
 - **agent:**  Joins the cluster as a worker-only node.
 
 
+### Config Proxy
+If you environment needs to access the internet through a proxy, you can set the `HTTP_PROXY` and `HTTPS_PROXY` environment variables to configure the installation script to use the proxy.
+
+```shell
+export HTTP_PROXY=http://proxy.example.com:8080
+export HTTPS_PROXY=http://proxy.example.com:8080
+export NO_PROXY=127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
+
+```
 ### Bootstrap Environment Variables
 Environment variables prefixed with `LLMOS_` are preserved for the systemd service. 
 
-| Flag              | Environment Variable  | Default                 | Description                                                                                                             |
-|-------------------|-----------------------|-------------------------|-------------------------------------------------------------------------------------------------------------------------|
-| --cluster-init    | LLMOS_CLUSTER_INIT    | `false`                 | Run bootstrap as cluster-init node.                                                                                     |
-| --server          | LLMOS_SERVER          |                         | The URL of the server to join. e.g., `https://server-url:6443`                                                          |
-| --token           | LLMOS_TOKEN           |                         | The token to use for join the cluster.                                                                                  |
-| --role            | LLMOS_ROLE            |                         | The node role to join the cluster. Default to `agent` role when server URL and token is provided but the role is empty. |
-| --force           | LLMOS_BOOTSTRAP_FORCE | `false`                 | Force run bootstrap even if already bootstrapped.                                                                       |
-| --config          | LLMOS_CONFIG_FILE     | `/etc/llmos/llmos.yaml` | Path to the LLMOS configuration file.                                                                                   |
-| --data-dir        | LLMOS_DATA_DIR        | `/var/lib/llmos`        | Path to the LLMOS data directory.                                                                                       |
-| --debug           | LLMOS_DEBUG           | `false`                 | Enable debug logging.                                                                                                   |
-| --debug-level     | LLMOS_DEBUG_LEVEL     | `7`                     | Debug log level (valid 0-9).                                                                                            |
+| Flag              | Environment Variable  | Default                  | Description                                                                                                             |
+|-------------------|-----------------------|--------------------------|-------------------------------------------------------------------------------------------------------------------------|
+| --cluster-init    | LLMOS_CLUSTER_INIT    | `false`                  | Run bootstrap as cluster-init node.                                                                                     |
+| --server          | LLMOS_SERVER          |                          | The URL of the server to join. e.g., `https://server-url:6443`                                                          |
+| --token           | LLMOS_TOKEN           |                          | The token to use for join the cluster.                                                                                  |
+| --role            | LLMOS_ROLE            |                          | The node role to join the cluster. Default to `agent` role when server URL and token is provided but the role is empty. |
+| --force           | LLMOS_BOOTSTRAP_FORCE | `false`                  | Force run bootstrap even if already bootstrapped.                                                                       |
+| --config          | LLMOS_CONFIG_FILE     | `/etc/llmos/config.yaml` | Path to the LLMOS configuration file.                                                                                   |
+| --data-dir        | LLMOS_DATA_DIR        | `/var/lib/llmos`         | Path to the LLMOS data directory.                                                                                       |
+| --debug           | LLMOS_DEBUG           | `false`                  | Enable debug logging.                                                                                                   |
+| --debug-level     | LLMOS_DEBUG_LEVEL     | `7`                      | Debug log level (valid 0-9).                                                                                            |
 
 To pass environment variables to the installation script, add the `LLMOS_` prefix environment variables just like below:
 
@@ -58,7 +72,7 @@ To pass environment variables to the installation script, add the `LLMOS_` prefi
 curl -sfL https://get-llmos.1block.ai | LLMOS_DEBUG=true LLMOS_DEBUG_LEVEL=9 sh -s -
 ```
 
-For more detailed information about LLMOS configuration options, visit the [LLMOS Configurations page](/docs/installation/configurations).
+For more detailed information about LLMOS configuration options, you can check out the [LLMOS Configurations](/docs/installation/configurations) page.
 
 ### Installation Script Environment Variables
 

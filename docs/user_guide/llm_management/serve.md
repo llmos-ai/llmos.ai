@@ -23,7 +23,7 @@ You can create one or more model services from the `LLM Management > Model Servi
 ![model-service-create](/img/docs/modelservice-create-general.png)
 
 
-### Resource Configuration
+### Resources Configuration
 1. Specify the CPU and memory resources for the model service.
 2. Specify the GPU resources for the model service :
    - Minimum `1` GPU is required if using the default `vllm-openai` serving image
@@ -49,7 +49,7 @@ Refer to the [Kubernetes Node Affinity Documentation](https://kubernetes.io/docs
 ## Access Model Service APIs
 
 Model Service will expose a list of RESTful APIs and implements [OpenAI Compatible APIs](https://platform.openai.com/docs/api-reference/introduction) with the `/v1` path.
-Your can get the model API URL by clicking the `Copy` button in the **Model Services** page.
+Your can get the model API URL by clicking the `Copy` button of the selected **Model Services** row.
 
 ![model-service-api](/img/docs/modelservice-copy-api.png)
 
@@ -108,10 +108,13 @@ print("Completion result:", completion)
 ```
 
 #### Notebook Interaction
-You can also interact with model services using the Jupyter [Notebook](notebooks.md), which is a great way to explore the model's capabilities with a rich interactive output like HTML, graphs, and more.
-
-:::note
-Within the LLMOS cluster, you can connect to the model service using the internal DNS name. For example, `http://modelservice-name.default.svc.cluster.local:8000`.
-:::
+You can also interact with model services using the [Notebook](notebooks.md) feature provided by LLMOS, it is a great way to explore the model's capabilities with a rich interactive output like HTML, graphs, and more using e.g., the Jupyter Notebook interface.
 
 ![model-service-notebook](/img/docs/modelservice-notebook-example.png)
+
+:::note
+Within your LLMOS cluster, you can connect to the model service using the internal DNS name.
+
+For example, a model service named `my-model-a` spawned in the `default` namespace, will have the DNS suffix `default.svc.cluster.local`.
+And the full URL will be `http://my-model-a.default.svc.cluster.local:8000`.
+:::

@@ -35,7 +35,7 @@ After adding the new global role, you should be able to see the new role listed 
 
 ![Assign Global Role](/img/docs/auth-globalrole-template-assign.png)
 
-:::info[Note]
+:::note
 For global roles, users will have access to the assigned resources in all namespaces they have access to. So if you want to restrict access to the namespace-level, consider creating a custom namespace role template instead.
 :::
 
