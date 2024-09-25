@@ -24,7 +24,7 @@ Uninstalling LLMOS involves two steps:
     ```shell 
     kubectl delete node $NODE_NAME
     ```
-   ![delete node](/img/docs/node-delete.png)
+   ![delete node](/img/docs/delete-node.png)
 
 ## Manual Uninstall
 

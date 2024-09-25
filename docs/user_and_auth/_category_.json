@@ -1,5 +1,5 @@
 {
-  "label": "Users & Authentication",
+  "label": "Users & RBAC",
   "position": 90,
   "link": {
     "type": "generated-index",
