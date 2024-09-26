@@ -15,9 +15,9 @@ LLMOS can be installed to a bare-metal server or a virtual machine. To bootstrap
 curl -sfL https://get-llmos.1block.ai | sh -s - --cluster-init --token mytoken
 ```
 
-You can run `journalctl -u llmos -f` to watch logs.
+To watch the installation logs, run `journalctl -u llmos -f`.
 
-After the installation completes, it is optional to add a new worker node to the cluster with the following command:
+After the installation completes, it is optional to add a additional worker node to the cluster with the following command:
 ```shell
 curl -sfL https://get-llmos.1block.ai | LLMOS_SERVER=https://server-url:6443 LLMOS_TOKEN=mytoken sh -s -
 ```
@@ -28,7 +28,7 @@ If you environment needs to access the internet through a proxy, you can set the
 ```shell
 export HTTP_PROXY=http://proxy.example.com:8080
 export HTTPS_PROXY=http://proxy.example.com:8080
-export NO_PROXY=127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
+export NO_PROXY=127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16 # Replace the CIDRs with your own
 ```
 
 ## Getting Started
@@ -41,8 +41,8 @@ After installing LLMOS, you can access the dashboard by navigating to `https://<
     ```
     ![first-login](/img/docs/auth-first-login.png)
 1. After logging in, you will be redirected to the setup page, you will need to configure the following:
-    - Set a new password for the admin user, using strong passwords is recommended.
-    - Config the server URL where all other nodes in your clusters will need to be able to reach this.
+    - Set a **new password** for the admin user, using strong passwords is recommended.
+    - Config the **server URL** where all other nodes in your cluster will be able to reach this.
     ![setup](/img/docs/auth-first-login-setup.png)
 1. After that, you will be redirected to the home page where you can start using LLMOS.
     ![home-page](/img/docs/home-page.png)
