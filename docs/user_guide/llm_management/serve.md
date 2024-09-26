@@ -3,78 +3,78 @@ sidebar_position: 4
 title: Model Serving
 ---
 
-The LLMOS platform provides a streamlined way to serve machine learning models using the `ModelService` resource. 
-This resource offers an intuitive interface to configure and manage model serving, leveraging the power of the [vLLM](https://docs.vllm.ai/en/latest/) serving engine. 
-By specifying details such as the model name, Hugging Face configurations, resource requirements, and more, users can easily set up and deploy models in a scalable and efficient manner.
+The LLMOS platform provides a streamlined way to serve machine learning models using the `ModelService` resource. This resource offers a user-friendly interface to configure and manage model serving, leveraging the powerful [vLLM](https://docs.vllm.ai/en/latest/) serving engine. By specifying parameters like the model name, Hugging Face configurations, resource requirements, and more, users can easily set up and deploy models efficiently and at scale.
 
-![model-service-list](/img/docs/model-service-list.png)
+![model-service-list](/img/docs/modelservice-list.png)
 
-## Create a Model Service
-You can create one or more model services from the `LLM Management > Model Services` page.
+## Creating a Model Service
+You can create one or more model services from the **LLM Management > Model Services** page.
 
 ### General Configuration
-1. Specify the name and namespace of your model service.
-2. Specify the model name, which can be a [Hugging Face](https://huggingface.co/models) model name(e.g., `facebook/opt-125m`) or a local model path(e.g., `/root/.cache/huggingface/hub/models--facebook--opt-125m`).
-3. (Optional) Specify the [additional parameters](https://docs.vllm.ai/en/latest/models/engine_args.html) like `--dtype, --max-model-len` in the **Arguments** field.
-4. (Optional) Configure the Hugging Face configurations:
-    - Select the `Hugging Face Hub token` secret credential if the model is only authorized to be downloaded. 
-    - Specify a custom Hugging Face Mirror URL if you need to use a mirror endpoint.
-5. (Optional) Add additional [environment variables](https://docs.vllm.ai/en/latest/serving/env_vars.html) for the model service if needed.
-![model-service-create](/img/docs/modelservice-create-general.png)
+1. Specify the name and namespace for your model service.
+2. Enter the model name, either from [Hugging Face](https://huggingface.co/models) (e.g., `Qwen/Qwen2.5-0.5B-Instruct`) or a persisted model volume path (e.g., `/root/.cache/huggingface/hub/models--Qwen--Qwen2.5-0.5B-Instruct`).
+3. (Optional) Add any [additional engine arguments](https://docs.vllm.ai/en/latest/models/engine_args.html), such as `--dtype` or `--max-model-len`, in the **Arguments** field.
+4. (Optional) Add Hugging Face Configuration:
+   - If the model is only authorized for downloading, select a [secret credential](#adding-a-huggingface-token) that contains the Hugging Face access token.
+   - Specify a custom Hugging Face Mirror URL if necessary (e.g., `https://hf-mirror.com/`).
+5. (Optional) Add additional [environment variables](https://docs.vllm.ai/en/latest/serving/env_vars.html) for the model service in the **Environment Variables** field.
 
+![model-service-create-general](/img/docs/modelservice-create-general.png)
 
-### Resources Configuration
-1. Specify the CPU and memory resources for the model service.
-2. Specify the GPU resources for the model service :
-   - Minimum `1` GPU is required if using the default `vllm-openai` serving image
-   - Select the correct **Runtime Class** if needed, default to **nvidia**
+### Resource Configuration
+1. **CPU and Memory**: Set CPU and memory resources for the model service.
+   - You may refer to [LLM numbers](https://github.com/ray-project/llm-numbers) for getting a better understanding of the resources consumed by the model.
+2. **GPU Resources**:
+   - Configure the desired **GPU** and **Runtime Class**(default to **nvidia**).
+   - A minimum of **1 GPU** is required for the model service with the default `vllm-openai` image.
 
 ![model-service-resources](/img/docs/modelservice-create-resources.png)
 
 ### Volumes
-1. Add a persistent volume to the `/root/.cache/huggingface/hub` path to store the downloaded model files.
-   -  You can select a volume with **Access Mode** of `ReadOnlyMany` if you want to use a shared volume across multiple model services.
-2. Mount an emptyDir volume to `/dev/shm` and set its medium to **Memory**. This effectively creates a temporary filesystem in memory, allowing you to allocate more shared memory than the default limit(64MB).
-   - **Note:** This is useful for PyTorch tensor parallel inference, which uses shared memory to share data between processes under the hood.
+1. **Persistent Volume**: A default persistent volume is mounted to `/root/.cache/huggingface/hub` to store downloaded model files.
+   - (Optional)You can add an existing volume that contains the model files to skip the download process using the **Add Volume** button.
+   - (Optional)You can add a shared volume(with StorageClass support **ReadWriteMany** mode) to share model files across multiple model services.
+2. **Shared Memory Allocation**: Mount an `emptyDir` volume to `/dev/shm` with **Medium** set to **Memory**. This creates a temporary in-memory filesystem, ideal for PyTorch tensor parallel inference, which uses shared memory between processes.
+   - If not enabled, the model service will use the default shared memory(shm) size of 64 MiB.
 
-![modelservice-create-volumes](/img/docs/modelservice-create-volumes.png)]
+![modelservice-create-volumes](/img/docs/modelservice-create-volumes.png)
 
 ### Node Scheduling
-Node Scheduling allows you to constrain which nodes your model service can be scheduled on based on node labels, or simply leave it default to allow run on any available node.
+You can specify node constraints for scheduling your model service using node labels, or leave it as default to run on any available node.
+
+![model-service-node-scheduling](/img/docs/modelservice-node-scheduling.png)
 
 :::note
-Refer to the [Kubernetes Node Affinity Documentation](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity) for more details.
+For more details, refer to the [Kubernetes Node Affinity Documentation](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity).
 :::
 
-## Access Model Service APIs
+## Accessing Model Service APIs
+The Model Service exposes a list of RESTful APIs compatible with [OpenAI's API](https://platform.openai.com/docs/api-reference/introduction) at the `/v1` path. You can get the model API URL by clicking the **Copy** button of the selected model.
 
-Model Service will expose a list of RESTful APIs and implements [OpenAI Compatible APIs](https://platform.openai.com/docs/api-reference/introduction) with the `/v1` path.
-Your can get the model API URL by clicking the `Copy` button of the selected **Model Services** row.
-
-![model-service-api](/img/docs/modelservice-copy-api.png)
+![modelservice-api-url](/img/docs/modelservice-api-url.png)
 
 ### API Endpoints
-| Route Path             | Methods   | Description                                                                             |
-|------------------------|-----------|-----------------------------------------------------------------------------------------|
-| `/v1/chat/completions` | POST      | Perform chat completions using the model service.                                       |
-| `/v1/completions`      | POST      | Perform completions using the model service.                                            |
-| `/v1/embeddings`       | POST      | Perform embeddings using the model service.                                             |
-| `/v1/models`           | GET       | List all available models.                                                              |
-| `/health`              | GET       | Check the health of the model service HTTP server.                                      |
-| `/tokenize`            | POST      | [Tokenize](https://platform.openai.com/tokenizer) text using the running model service. |
-| `/detokenize`          | POST      | Detokenize tokens using the running model service.                                      |
-| `/openapi.json`        | GET, HEAD | Get the OpenAPI json specification of the model service.                                |
+| Route Path               | Methods   | Description                                                                             |
+|--------------------------|-----------|-----------------------------------------------------------------------------------------|
+| `/v1/chat/completions`   | POST      | Perform chat completions using the model service.                                       |
+| `/v1/completions`        | POST      | Perform standard completions using the model service.                                   |
+| `/v1/embeddings`         | POST      | Generate embeddings using the model service.                                            |
+| `/v1/models`             | GET       | List all available models.                                                              |
+| `/health`                | GET       | Check the health of the model service HTTP server.                                      |
+| `/tokenize`              | POST      | [Tokenize](https://platform.openai.com/tokenizer) text using the running model service. |
+| `/detokenize`            | POST      | Detokenize tokens using the running model service.                                      |
+| `/openapi.json`          | GET, HEAD | Get the OpenAPI JSON specification for the model service.                               |
 
-
-### API Examples
-#### Chat Completions: curl
+### API Usage Examples
+#### cURL Example
 ```bash
 export LLMOS_API_KEY=myapikey
+export API_BASE=192.168.31.100:8443/api/v1/namespaces/default/services/modelservice-qwen2:http/proxy/v1
 curl -k -X POST \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $LLMOS_API_KEY" \
   -d '{
-    "model": "facebook/opt-125m",
+    "model": "Qwen/Qwen2.5-0.5B-Instruct",
     "messages": [
       {
         "role": "system",
@@ -82,39 +82,81 @@ curl -k -X POST \
       },
       {
         "role": "user",
-        "content": "Hello!"
+        "content": "Say this is a test"
       }
     ],
     "temperature": 0.9
   }' \
-  https://modelservice-api-url/v1/chat/completions
+  $API_BASE/chat/completions
 ```
 
-#### Completions Example: Python
-Since the server API is compatible with OpenAI API, you can use it as a drop-in replacement for any applications using OpenAI API. For example, another way to query the server is via the openai python package:
+Response Example:
+```json
+{
+  "id":"chat-efffa70236bd4edda7e5420349339d45",
+  "object":"chat.completion",
+  "created":1727267645,
+  "model":"Qwen/Qwen2.5-0.5B-Instruct",
+  "choices":[
+    {
+      "index":0,
+      "message":{
+        "role":"assistant",
+        "content":"Yes, it is a test."
+      },
+      "logprobs":null,
+      "finish_reason":"stop"
+    }
+  ],
+  "usage":{
+    "prompt_tokens":24,
+    "total_tokens":32,
+    "completion_tokens":8
+  }
+}
+```
+
+#### Python Example
+Since the API is compatible with OpenAI, you can use it as a drop-in replacement for OpenAI-based applications.
 
 ```python
 from openai import OpenAI
-# Modify OpenAI's API key and API base to use modelService's API server.
-openai_api_key = "EMPTY"
-openai_api_base = "https://modelservice-api-url/v1" # Replace with your model service's API URL.
+import httpx
+
+# Set up API key and base URL
+openai_api_key = "llmos-5frck:xxxxxxxxxg79c9p5"
+openai_api_base = "https://192.168.31.100:8443/api/v1/namespaces/default/services/modelservice-qwen2:http/proxy/v1"
 client = OpenAI(
-    api_key=openai_api_key,
-    base_url=openai_api_base,
+   api_key=openai_api_key,
+   base_url=openai_api_base,
+   http_client=httpx.Client(verify=False), # Disable SSL verification or use a custom CA bundle.
 )
-completion = client.completions.create(model="facebook/opt-125m",
-                                      prompt="San Francisco is a")
-print("Completion result:", completion)
+
+completion = client.chat.completions.create(
+   model="Qwen/Qwen2.5-0.5B-Instruct",
+   messages=[{"role": "user", "content": "How do I output all files in a directory using Python?"}]
+)
+print(completion.choices[0].message.content)
 ```
 
-#### Notebook Interaction
-You can also interact with model services using the [Notebook](notebooks.md) feature provided by LLMOS, it is a great way to explore the model's capabilities with a rich interactive output like HTML, graphs, and more using e.g., the Jupyter Notebook interface.
+#### Notebooks Interaction
+You can also interact with model services using the [Notebooks](notebooks.md), which allows you to explore the model’s capabilities more interactively using HTML, graphs, and more (e.g., using a Jupyter Notebook as below).
 
 ![model-service-notebook](/img/docs/modelservice-notebook-example.png)
 
 :::note
-Within your LLMOS cluster, you can connect to the model service using the internal DNS name.
+Within your LLMOS cluster, you can connect to the model service using its internal DNS name.
 
-For example, a model service named `my-model-a` spawned in the `default` namespace, will have the DNS suffix `default.svc.cluster.local`.
-And the full URL will be `http://my-model-a.default.svc.cluster.local:8000`.
+To get the internal DNS name, Click the **Internal URL** button of the model service.
 :::
+
+
+## Adding a HuggingFace Token
+If the model is authorized for downloading, you will need to add a [HuggingFace token](https://huggingface.co/docs/hub/en/security-tokens) when creating the model service. To add a new HuggingFace token:
+1. Go to the **Advanced > Secrets** page and click the **Create** button 
+2. Select the **Opaque** type.
+   ![secret-create-opaque](/img/docs/secret-types-opaque.png)
+3. Select the **Namespace** and specify a meaningful **Name**.
+4. Specify the **key** e.g, `token`, and the **value** as your HuggingFace token.
+   ![secret-create-hf-token](/img/docs/secret-create-hf-token.png)
+5. Click **Create** to save the secret. And you should see selected secret when creating the model service within the same namespace.
