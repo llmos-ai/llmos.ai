@@ -63,9 +63,11 @@ Custom namespace roles will only take effect if they are assigned to users withi
 ![Create Namespace Role](/img/docs/auth-namespacerole-template-create.png)
 
 
-### Assigning Namespace Role to the User
-To assign a custom namespace role to a user, follow these steps:
-1. Navigate to **LLMOS Management** > **Advanced** > **Namespaces** tab.
+## RBAC Management
+
+### Namespace Permissions
+To assign a custom namespace role to a user, following the steps below:
+1. Navigate to **LLMOS Management** > **Advanced** > **Namespaces** page.
 2. Click **Create** or **Edit** button on the namespace that you want to assign the role to.
 3. On the **Members** tab, click the **Add** button to add a new member.
 4. Typing to search for the user you want to assign the role to and select the namespace permissions from the list.
@@ -73,5 +75,6 @@ To assign a custom namespace role to a user, follow these steps:
    - **Read-Only**: The user will have read-only access to the namespace.
    - **Custom**: Select this option to assign custom namespace roles to the user.
    ![Add Namespace Member](/img/docs/auth-namespace-add-member.png)
-5. Click **Save** to apply the changes.
+5. Click **Create** and the member should be added to the namespace with the selected role.
 ![Assign Namespace Role](/img/docs/auth-namespace-assign-role.png)
+6. To verify the role permissions, log in to the dashboard as the user, and you should view or manage the resources in the namespace that the role allows you to access.

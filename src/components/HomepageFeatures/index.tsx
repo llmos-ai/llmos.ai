@@ -22,7 +22,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: 'Complete Infrastructure & LLM Lifecycle Management',
-    Svg: require('@site/static/img/landing_feature2.svg').default,
+    Img: require('@site/static/img/landing_feature2.png').default,
     description: (
       <>
         Provides a unified interface for both developers and non-developers to manage the LLM infrastructure, ML Cluster, models and workloads.
@@ -40,13 +40,24 @@ const FeatureList: FeatureItem[] = [
   },
 ];
 
-function Feature({title, Svg, description}: FeatureItem) {
+function Feature({title, Svg, Img, description}: FeatureItem) {
   return (
       <div className={clsx('col col--4')}>
           <div className="text--center">
-              <Svg className="feature-svg" role="img"/>
+            <div className={styles.featureContainer}>
+              {Svg &&
+                <div>
+                  <Svg className={styles.featureSvg} role="img"/>
+                </div>
+              }
+              {Img &&
+                <div>
+                  <img src={Img} className={styles.featureSvg} role="img"/>
+                </div>
+              }
+            </div>
           </div>
-          <div className="text--center padding-horiz--md">
+        <div className="text--center padding-horiz--md">
               <Heading as="h3">{title}</Heading>
               <p>{description}</p>
           </div>

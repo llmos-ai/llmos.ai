@@ -28,9 +28,13 @@ To join a node, you will need the `server-url` and the cluster `token`.
 curl -sfL https://get-llmos.1block.ai | sh -s - --server https://server-url:6443 --token mytoken
 ```
 
-:::note
+:::info
 If you have already configured those options using the [LLMOS Configuration](/docs/installation/configurations) file, you can just run the installation script with:
-`curl -sfL https://get-llmos.1block.ai | sh -` .
+`curl -sfL https://get-llmos.1block.ai | sh -`.
+
+Or if you have already downloaded the [LLMOS binary](https://github.com/llmos-ai/llmos/releases) manually, you can run with:
+
+`llmos bootstrap --debug`
 :::
 
 ### Node Roles
@@ -49,8 +53,8 @@ If you environment needs to access the internet through a proxy, you can set the
 export HTTP_PROXY=http://proxy.example.com:8080
 export HTTPS_PROXY=http://proxy.example.com:8080
 export NO_PROXY=127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
-
 ```
+
 ### Bootstrap Environment Variables
 Environment variables prefixed with `LLMOS_` are preserved for the systemd service. 
 

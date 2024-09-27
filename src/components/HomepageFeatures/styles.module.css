@@ -5,7 +5,14 @@
   width: 100%;
 }
 
+.featureContainer {
+  min-height: 240px;
+  width: 100%;
+  padding: 20px;
+}
+
 .featureSvg {
-  height: 200px;
-  width: 200px;
+  height: auto;
+  max-height: 200px;
+  max-width: 100%;
 }
