@@ -147,7 +147,7 @@ You can also interact with model services using the [Notebooks](notebooks.md), w
 :::note
 Within your LLMOS cluster, you can connect to the model service using its internal DNS name.
 
-To get the internal DNS name, Click the **Internal URL** button of the model service.
+To get the internal DNS name, Click the **Copy Internal URL** button of the model service.
 :::
 
 

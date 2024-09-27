@@ -27,7 +27,7 @@ For admin users, you can create a new user by clicking on the **Create** button.
 
 :::note
 - Admin users will have access to the resources in all namespaces.
-- Standard users will only have access to limited system resources and **llmos-public** namespace, admin users can help to [assign namespaced-roles](./role-template.md#assigning-namespace-role-to-the-user) to standard users.
+- Standard users will only have access to limited system resources and **llmos-public** namespace, admin users can help to [assign namespaced-roles](./role-template.md#rbac-management) to standard users.
 :::
 
 ## Change Password

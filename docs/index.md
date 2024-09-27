@@ -24,10 +24,10 @@ Server nodes also function as worker nodes, but prioritize resources to the syst
 :::
 
 ## Key Features
-- **Easy to Install:** Install directly on the x86_64 or ARM64 architecture, offering an out-of-the-box user experience.
-- **Complete Infrastructure & LLM Lifecycle Management:** Provides a unified interface for both developers and non-developers to manage the LLM infrastructure, ML Cluster, models and workloads.
-- **Easy to Use:** Build models and AI applications in your own way, without needing to managing Kubernetes & infrastructure directly.
-- **Perfect for Edge & Branch:** Better resource optimization, simplify the deployment of models and workloads to edge and branch networks, but can also scale up horizontally to handle large workloads.
+- **Easy Installation:** Seamlessly install on x86_64 or ARM64 architectures for an out-of-the-box user experience.
+- **Comprehensive LLM Lifecycle Management:** A unified interface for both developers and non-developers to manage LLM infrastructure, ML Clusters, models and workloads.
+- **Easy to Use:** Build models and AI applications in your own way, without the need to managing Kubernetes & infrastructure directly.
+- **Optimized for Edge & Branch Deployment:** Enhance resource efficiency and simplify model deployment in edge and branch networks, while maintaining the capability to scale horizontally for larger workloads.
 
 ## Next Step
 
