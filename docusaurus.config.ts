@@ -2,6 +2,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
+
 const config: Config = {
   title: 'LLMOS',
   tagline: 'An open-source, cloud-native infrastructure software for AI',
@@ -122,8 +123,7 @@ const config: Config = {
       copyright: `Copyright © ${new Date().getFullYear()} 1Block.AI, Built with love 💙.`,
     },
     prism: {
-      theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
+      theme: prismThemes.dracula,
     },
   } satisfies Preset.ThemeConfig,
 };
