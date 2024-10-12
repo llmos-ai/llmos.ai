@@ -36,10 +36,9 @@ To add a node to the cluster from the dashboard:
 3. Select the node role (server or worker).
 4. Optionally, you can specify the advanced options like the node name, IP address, labels, and taints through the **Show Advanced** option.
 5. Check the generated command and run it on each of the existing Linux machines you want to register.
+    ![node-import](/img/docs/node-import.png)
 6. (Optional): To monitor installation logs, run `journalctl -u llmos -f` on the node.
-7. Wait for the node to be ready and it should be listed as ready on the node page.
-
-![node-import](/img/docs/node-import.png)
+7. Wait for the node to be ready, and it should be listed as **Active** on the node page.
 
 ## Deleting a Node
 
