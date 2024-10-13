@@ -109,13 +109,13 @@ const config: Config = {
         {
           title: 'More',
           items: [
-            // {
-            //   label: 'Blog',
-            //   to: '/blog',
-            // },
             {
               label: 'GitHub',
               href: 'https://github.com/llmos-ai/llmos',
+            },
+            {
+              label: 'Terms of Use',
+              to: '/terms-of-use',
             },
           ],
         },

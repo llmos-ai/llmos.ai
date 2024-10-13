@@ -25,7 +25,7 @@ EOF
 # LLMOS Operator version to be installed
 llmosOperatorVersion: v0.1.0
 
-# LLMOS chart repository, set to "latest" or "dev". Defaults to latest.
+# LLMOS chart repository, set to "latest", "rc" or "dev". Defaults to latest.
 chartRepo: latest
 
 # Kubernetes version to be installed. Defaults to a stable k3s version if not specified.

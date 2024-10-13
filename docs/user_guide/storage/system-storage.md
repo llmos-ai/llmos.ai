@@ -36,7 +36,9 @@ For more information, please refer to the [Rook Ceph Prerequisites](https://rook
 
 ## Enabling Ceph Storage
 
-If the Ceph storage is not enabled, you should be able to view the enabling notice in the home page. Click the `Enable` link to go to the configuration page.
+If the Ceph storage is not enabled, you should be able to see the enabling notification in the **Home** page. Click the `Enable` link to go to the configuration page.
+
+![Enable Ceph Notification](/img/docs/ceph-enable-notification.png)
 
 Configure the Ceph cluster, block pools, filesystem and other parameters if you want. Then click `Save` to enable the Ceph storage.
 
@@ -69,7 +71,7 @@ Before disabling the Ceph storage, please make sure that all workloads using the
 
 ![Disable Ceph](/img/docs/ceph-addon-disable.png)
 
-### Delete the data on hosts
+### Delete the Data on Hosts
 
 :::info
 The final cleanup step requires deleting files on each host in the cluster. All files under the dataDirHostPath `/var/lib/llmos/rook-ceph` property specified in the cluster will need to be deleted. Otherwise, inconsistent state will remain when re-enabling the Ceph storage.
@@ -114,4 +116,4 @@ If disks are still reported locked, rebooting the node often helps clear LVM-rel
 
 If there are multiple Ceph clusters and some disks are not wiped yet, it is necessary to manually determine which disks map to which device mapper devices.
 
-For more detailed information, please refer to the [Rook Ceph Storage Cleanup](https://rook.github.io/docs/rook/latest-release/Getting-Started/ceph-teardown/?h=cleanup#troubleshooting) guide.
+For more detailed information, please refer to the [Rook Ceph Cleanup](https://rook.github.io/docs/rook/latest-release/Getting-Started/ceph-teardown/?h=cleanup#troubleshooting) guide.
