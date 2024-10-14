@@ -3,7 +3,7 @@ sidebar_position: 3
 title: Notebooks
 ---
 
-Notebooks offer a way to run lightweight web-based development environments within your LLMOS cluster, where you can run interactive code, data analysis, and machine learning tasks.
+Notebooks offer a way to run lightweight web-based development environments of JupyterLab, RStudio, and VS Code within your LLMOS cluster, where you can run interactive code, data analysis, and machine learning tasks.
 
 With notebooks, you can easily create and manage lightweight notebook environments, providing a seamless and efficient development experience. Here's what you can do with notebooks:
 

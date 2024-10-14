@@ -50,9 +50,29 @@ Default value should be enough for most cases. Refer to the [Ceph Cluster Config
 
 Wait for the Ceph cluster `Phase` to be **Ready**. You can also check the Ceph Block Pool and Filesystem status in the related pages under the `Storage` menu.
 
+:::note
+If you can't see the Ceph cluster, please try to filter the namespace with `All Namespaces` option in the top navigation bar.
+
+![Namespace Filter](/img/docs/ceph-ns-filter.png)
+
+:::
+
 ![Ceph Status](/img/docs/ceph-cluster-ready.png)
 
 Now you can use the default `llmos-ceph-block` or `llmos-ceph-filesystem` StorageClass to create volumes associated with the workloads.
+
+### Ceph Toolbox
+
+To access the Ceph cluster, you can use the Ceph toolbox to execute Ceph commands.
+1. Go to the **Storage > Ceph Clusters** page and click the `Execute Toolbox` button of the **llmos-ceph** cluster.
+   ![Ceph Toolbox](/img/docs/ceph-toolbox.png)
+2. This will open a new window with the Ceph toolbox pod running in the background. And all available tools in the toolbox are ready for your troubleshooting needs. For example, you can run:
+    ```shell
+    ceph status
+    ceph osd status
+    ceph df
+    rados df
+    ```
 
 ## Disable Ceph Storage
 

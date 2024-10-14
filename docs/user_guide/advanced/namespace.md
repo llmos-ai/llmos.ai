@@ -3,22 +3,26 @@ sidebar_position: 1
 title: Namespace
 ---
 
-Namespaces are a special resource that provide a mechanism for isolating groups of resources within a single cluster. Resource names need to be unique within a namespace, but not across different namespaces. Namespace-based scoping applies only to namespaced objects (e.g., Notebooks, Model Services) and does not affect cluster-wide objects (e.g., Nodes, Storage Classes).
+Namespaces provide a way to isolate groups of resources within a single cluster. Resource names must be unique within a namespace, but can be duplicated across different namespaces. Namespace-based scoping applies only to namespaced objects (e.g., Notebooks, Model Services) and does not impact cluster-wide objects (e.g., Nodes, Storage Classes).
 
 :::note
-For production and isolated environments, avoid using the `default` or `llmos-public` namespaces. Instead, create and use custom namespaces.
+For production and isolated environments, avoid using the `default` or `llmos-public` namespaces. Instead, create and use custom namespaces tailored to your needs.
 :::
 
 ### System Namespaces
 
-LLMOS reserves certain namespaces for system components. These namespaces are not intended for end-user use.
+LLMOS reserves specific namespaces for system components. These are not intended for end-user use:
 
-- `ceph-system`: Used for built-in Ceph storage.
 - `kube-system`: Reserved for Kubernetes system components.
-- `kube-node-lease`: Used for managing Kubernetes node leases.
-- `kube-public`: For Kubernetes public resources.
+- `kube-node-lease`: Manages Kubernetes node leases.
+- `kube-public`: For publicly accessible Kubernetes resources.
 - `llmos-system`: Dedicated to LLMOS system components.
-- `system-upgrade`: Used for system upgrade service.
+- `storage-system`: Handles built-in system storage.
+- `system-upgrade`: Used for the system upgrade service.
+
 
 ### Public Namespace
-The `llmos-public` namespace is a special namespace designed for public resources accessible by all end users. By default, all resources in this namespace are publicly accessible(**Read Only**).
+
+The `llmos-public` namespace is a designated space for resources that are accessible to all end users. By default, all resources within this namespace are publicly available, with non-admin users having `read-only` access.
+
+If you need to offer a service to all users within your company or organization, this namespace is ideal for hosting such publicly accessible resources.
