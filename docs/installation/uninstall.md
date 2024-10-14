@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 4
 title: Uninstalling LLMOS
 ---
 If you installed LLMOS using the installation script, an uninstallation script is automatically generated during installation.

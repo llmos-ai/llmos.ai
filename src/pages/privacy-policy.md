@@ -72,7 +72,7 @@ You have the following rights regarding your personal information:
 
 ## 8. Children's Privacy
 
-1Block.AI's services are not intended for children under the age of 13. We do not knowingly collect personal information from children. If we become aware that a child under 13 has provided us with personal information, we will take steps to delete that information.
+1Block.AI's services are not intended for children under the age of 14. We do not knowingly collect personal information from children. If we become aware that a child under 13 has provided us with personal information, we will take steps to delete that information.
 
 ## 9. International Users
 

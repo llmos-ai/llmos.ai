@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 title: Bootstrap Options
 ---
 
@@ -7,6 +7,7 @@ title: Bootstrap Options
 
 The installation script provides a convenient method to bootstrap LLMOS using a shell script. It automatically downloads the latest LLMOS release from [Github](https://github.com/llmos-ai/llmos/releases) and initializes the LLMOS cluster and system components via the systemd service.
 
+Make sure your nodes meet the [requirements](./requirements) before proceeding.
 
 ### Cluster Initialization
 

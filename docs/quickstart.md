@@ -7,6 +7,8 @@ title: Quickstart
 
 This guide will help you quickly launch a LLMOS cluster with default bootstrap options. The [installation](./installation) section covers more details about the bootstrap configuration options.
 
+Make sure your nodes meet the [requirements](./installation/requirements) before proceeding.
+
 ## Installation Script
 
 LLMOS can be installed to a bare-metal server or a virtual machine. To bootstrap a **new cluster**, follow the steps below:
