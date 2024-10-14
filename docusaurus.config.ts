@@ -126,6 +126,15 @@ const config: Config = {
       theme: prismThemes.dracula,
     },
   } satisfies Preset.ThemeConfig,
+
+  plugins: [
+    [
+      '@docusaurus/plugin-google-gtag',
+      {
+        trackingID: 'G-6XPK9GRW4F',
+      },
+    ],
+  ],
 };
 
 export default config;
