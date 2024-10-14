@@ -2,7 +2,6 @@ import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
-
 const config: Config = {
   title: 'LLMOS',
   tagline: 'An open-source, cloud-native infrastructure software for AI',
@@ -124,6 +123,23 @@ const config: Config = {
     },
     prism: {
       theme: prismThemes.dracula,
+    },
+    algolia: {
+      appId: 'Q6P8C7D7PL',
+      apiKey: '273e669737ab2cf565295ab7ab782c8b',
+      indexName: 'llmos-1block',
+      contextualSearch: true,
+      searchParameters: {},
+      // Optional: path for search page that enabled by default (`false` to disable it)
+      searchPagePath: 'search',
+      // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
+      // replaceSearchResultPathname: {
+      //   from: '/docs/', // or as RegExp: /\/docs\//
+      //   to: '/',
+      // },
+
+      // Optional: whether the insights feature is enabled or not on Docsearch (`false` by default)
+      insights: false,
     },
   } satisfies Preset.ThemeConfig,
 
