@@ -12,6 +12,34 @@ Whether you're setting up LLMOS on a virtual machine or bare-metal server, each 
 - No two nodes should have the same hostname.
 - The node must not have any existing Kubernetes clusters running on it.
 
+:::note
+To check if the NVIDIA driver is installed correctly, run the following command:
+```shell
+nvidia-smi
+```
+The output should look something like this:
+```
++---------------------------------------------------------------------------------------+
+| NVIDIA-SMI 535.183.06             Driver Version: 535.183.06   CUDA Version: 12.2     |
+|-----------------------------------------+----------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
+|                                         |                      |               MIG M. |
+|=========================================+======================+======================|
+|   0  NVIDIA GeForce RTX 4090        Off | 00000000:01:00.0 Off |                  Off |
+| 30%   41C    P0              54W / 450W |      0MiB / 24564MiB |      0%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+
++---------------------------------------------------------------------------------------+
+| Processes:                                                                            |
+|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
+|        ID   ID                                                             Usage      |
+|=======================================================================================|
+|  No running processes found                                                           |
++---------------------------------------------------------------------------------------+
+```
+:::
 ## Supported Architectures
 
 LLMOS works on the following system architectures:
@@ -47,7 +75,7 @@ The hardware needs will vary depending on your deployment size. Below are the mi
 | Root Disk Space  | 100  GB                                                                                                       | 200 GB                              |
 | Disk Performance | [5,000+ random IOPS](https://prog.world/is-storage-speed-suitable-for-etcd-ask-fio/) for root disk (SSD/NVMe) | Same as minimum requirements        |
 
-### Disk Usage
+### Disk Type
 
 For better performance, always use SSDs for your LLMOS cluster. If you’re using a cloud provider, pick the suitable disk size that gives you the maximum IOPS.
 
