@@ -63,16 +63,16 @@ const config: Config = {
       },
       items: [
         {
+          href: 'https://1block.ai',
+          label: 'Home',
+          position: 'right',
+        },
+        {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
           label: 'Docs',
           position: 'right'
         },
-        // {
-        //   to: '/blog',
-        //   label: 'Blog',
-        //   position: 'right'
-        // },
         {
           href: 'https://github.com/llmos-ai/llmos',
           label: 'GitHub',
