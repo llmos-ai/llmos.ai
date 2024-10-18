@@ -16,25 +16,25 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/landing_feature1.svg').default,
     description: (
       <>
-        Install directly on the x86_64 or ARM64 architecture, offering an out-of-the-box user experience.
+        Works out of the box on both x86_64 and ARM64 architectures for a smooth installation experience.
       </>
     ),
   },
   {
-    title: 'Complete Infrastructure & LLM Lifecycle Management',
+    title: 'Unified Infrastructure, LLM & Application Lifecycle Management',
     Img: require('@site/static/img/landing_feature2.png').default,
     description: (
       <>
-        Provides a unified interface for both developers and non-developers to manage the LLM infrastructure, ML Cluster, models and workloads.
+        Offers a unified interface that makes it easy for both developers and non-developers to manage infrastructure, ML clusters, models, and user workloads.
       </>
     ),
   },
   {
-    title: 'Perfect for Edge & Branch',
+    title: 'Private Deployment, Ideal for Edge & Branch',
     Svg: require('@site/static/img/landing_feature3.svg').default,
     description: (
       <>
-        Better resource optimization, simplify the deployment of models and workloads to edge and branch networks, but can also scale up horizontally to handle large workloads.
+        Supports private deployments with optimized resources for running models and workloads in edge and branch networks. It also allows for horizontal scaling to meet future business needs.
       </>
     ),
   },
