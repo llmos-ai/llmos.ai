@@ -8,7 +8,7 @@ Whether you're setting up LLMOS on a virtual machine or bare-metal server, each 
 ## Prerequisites
 
 - If the node has NVIDIA GPUs, install the [NVIDIA driver](https://docs.nvidia.com/datacenter/tesla/driver-installation-guide/index.html) first.
-    - Ensure the CUDA [Compute Capability](https://developer.nvidia.com/cuda-gpus) is 6.0 or higher.
+    - Ensure the CUDA [Compute Capability](https://developer.nvidia.com/cuda-gpus) is 7.5 or higher.
 - No two nodes should have the same hostname.
 - The node must not have any existing Kubernetes clusters running on it.
 
