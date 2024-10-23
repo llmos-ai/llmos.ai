@@ -6,6 +6,7 @@ import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import Heading from '@theme/Heading';
 
 import styles from './index.module.css';
+import Translate from '@docusaurus/Translate';
 
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
@@ -16,14 +17,15 @@ function HomepageHeader() {
                 {siteConfig.title}
             </Heading>
             <p className="hero__subtitle landing-subtitle">
-                An Open Source, Cloud-native Infrastructure Software Tailored for Managing AI Applications and
-                Large Language Models(LLMs).
+              <Translate id="home-title">
+                An Open Source, Cloud-native Infrastructure Software designed to simplify the management of AI applications and Large Language Models (LLMs).
+              </Translate>
             </p>
             <div className={styles.buttons}>
                 <Link
                     className="button button--secondary button--lg"
                     to="/docs/quickstart">
-                    Quickstart - 1min ⏱️
+                  <Translate id="home-quickstart">Quickstart - 1min ⏱️</Translate>
                 </Link>
             </div>
         </div>

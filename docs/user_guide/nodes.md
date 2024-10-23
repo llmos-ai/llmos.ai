@@ -48,6 +48,6 @@ To delete a node from the cluster:
 2. Select the node you want to delete and click **Delete**.
 3. Confirm the deletion by typing the node name in the confirmation dialog.
 4. The node will be removed from the cluster.
-5. To prevent the node from rejoining the cluster, you will need to either reinstall the operating system or remove the node completely using the [uninstall script](../installation/uninstall#uninstall-script).
+5. To prevent the node from rejoining the cluster, you will need to either reinstall the operating system or remove the node completely using the [uninstall script](../installation/uninstall#manual-uninstall).
 
 ![delete](/img/docs/delete-node.png)

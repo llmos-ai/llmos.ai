@@ -1,18 +1,18 @@
 {
   "link.title.Docs": {
-    "message": "Docs",
+    "message": "文档",
     "description": "The title of the footer links column with title=Docs in the footer"
   },
   "link.title.Community": {
-    "message": "Community",
+    "message": "社区",
     "description": "The title of the footer links column with title=Community in the footer"
   },
   "link.title.More": {
-    "message": "More",
+    "message": "更多",
     "description": "The title of the footer links column with title=More in the footer"
   },
   "link.item.label.Docs": {
-    "message": "Docs",
+    "message": "LLMOS 文档",
     "description": "The label of footer link with label=Docs linking to /docs"
   },
   "link.item.label.Discussions": {
@@ -28,11 +28,11 @@
     "description": "The label of footer link with label=GitHub linking to https://github.com/llmos-ai/llmos"
   },
   "link.item.label.Terms of Use": {
-    "message": "Terms of Use",
+    "message": "使用条款",
     "description": "The label of footer link with label=Terms of Use linking to /terms-of-use"
   },
   "copyright": {
-    "message": "Copyright © 2024 1Block.AI, Built with love 💙.",
+    "message": "版权 © 2024 1Block.AI，倾心打造 💙",
     "description": "The footer copyright"
   }
 }
