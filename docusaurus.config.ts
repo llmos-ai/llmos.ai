@@ -26,9 +26,16 @@ const config: Config = {
   // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
-    locales: ['en'],
+    locales: ['en', 'zh'],
+    localeConfigs: {
+      en: {
+        label: "English",
+      },
+      zh: {
+        label: "简体中文",
+      },
+    }
   },
-
   presets: [
     [
       'classic',
@@ -65,7 +72,7 @@ const config: Config = {
         {
           href: 'https://1block.ai',
           label: 'Home',
-          position: 'right',
+          position: 'left',
         },
         {
           type: 'docSidebar',
@@ -76,6 +83,10 @@ const config: Config = {
         {
           href: 'https://github.com/llmos-ai/llmos',
           label: 'GitHub',
+          position: 'right',
+        },
+        {
+          type: 'localeDropdown',
           position: 'right',
         },
       ],

@@ -66,6 +66,11 @@ The Model Service exposes a list of RESTful APIs compatible with [OpenAI's API](
 | `/openapi.json`          | GET, HEAD | Get the OpenAPI JSON specification for the model service.                               |
 
 ### API Usage Examples
+
+:::note
+The LLMOS API token can be obtained from the [API Keys](../../user_and_auth/api-keys) page.
+:::
+
 #### cURL Example
 ```bash
 export LLMOS_API_KEY=myapikey

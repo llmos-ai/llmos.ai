@@ -1,0 +1,54 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.tutorialSidebar.category.Installation": {
+    "message": "安装",
+    "description": "The label for category Installation in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Installation.link.generated-index.description": {
+    "message": "LLMOS 安装指南.",
+    "description": "The generated-index page description for category Installation in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.User Guide": {
+    "message": "用户指南",
+    "description": "The label for category User Guide in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.User Guide.link.generated-index.description": {
+    "message": "LLMOS 用户指南",
+    "description": "The generated-index page description for category User Guide in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.LLM Management": {
+    "message": "LLM 管理",
+    "description": "The label for category LLM Management in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.LLM Management.link.generated-index.description": {
+    "message": "LLM 管理指南",
+    "description": "The generated-index page description for category LLM Management in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Storage": {
+    "message": "存储",
+    "description": "The label for category Storage in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Storage.link.generated-index.description": {
+    "message": "LLMOS 存储指南",
+    "description": "The generated-index page description for category Storage in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Advanced": {
+    "message": "高级选项",
+    "description": "The label for category Advanced in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Advanced.link.generated-index.description": {
+    "message": "存储指南",
+    "description": "The generated-index page description for category Advanced in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Users & RBAC": {
+    "message": "用户与权限管理",
+    "description": "The label for category Users & RBAC in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Users & RBAC.link.generated-index.description": {
+    "message": "用户， API Keys，RBAC权限与角色管理",
+    "description": "The generated-index page description for category Users & RBAC in sidebar tutorialSidebar"
+  }
+}
