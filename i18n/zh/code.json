@@ -436,5 +436,29 @@
   "theme.tags.tagsPageTitle": {
     "message": "标签",
     "description": "The title of the tag list page"
+  },
+  "home-title": {
+    "message": "一款开源的云原生基础设施软件，专为加速 AI 应用开发并简化大型语言模型（LLM）的管理而设计。支持公有云和私有化部署，让你轻松驾驭 AI 基础设施、机器学习集群和模型部署等工作"
+  },
+  "home-quickstart": {
+    "message": "快速入门 - 1分钟⏱️"
+  },
+  "home-feature-install-title": {
+    "message": "简单易用，一键安装"
+  },
+  "home-feature-install-desc": {
+    "message": "开箱即用，支持 x86_64 和 ARM64 架构，提供顺畅的安装体验。"
+  },
+  "home-feature-mgmt-title": {
+    "message": "统一基础设施、LLM 和应用生命周期管理"
+  },
+  "home-feature-mgmt-desc": {
+    "message": "提供统一的界面，使开发者和非开发者都能轻松管理基础设施、机器学习集群、大语言模型和用户工作负载。"
+  },
+  "home-feature-deploy-title": {
+    "message": "私有化部署，支持边缘和分支机构场景"
+  },
+  "home-feature-deploy-desc": {
+    "message": "支持私有部署，优化资源以便在边缘和分支网络中运行模型和工作负载。同时支持横向扩展，以满足未来业务需求。"
   }
 }

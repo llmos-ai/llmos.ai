@@ -2,41 +2,52 @@ import clsx from 'clsx';
 import Heading from '@theme/Heading';
 import styles from './styles.module.css';
 import React from "react";
+import {translate} from '@docusaurus/Translate';
+
 
 type FeatureItem = {
   title: string;
   Svg: React.ComponentType<React.ComponentProps<'svg'>>;
   Img: string,
-  description: Element;
+  description: string;
 };
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Install',
+    title: translate({
+      message: 'Easy to Use',
+      id: 'home-feature-install-title'
+    }),
+    description: translate({
+      message: 'Works out of the box on both x86_64 and ARM64 architectures for a smooth installation experience.',
+      id: 'home-feature-install-desc'
+    }),
     Svg: require('@site/static/img/landing_feature1.svg').default,
-    description: (
-      <>
-        Works out of the box on both x86_64 and ARM64 architectures for a smooth installation experience.
-      </>
-    ),
+    Img: null,
   },
   {
-    title: 'Unified Infrastructure, LLM & Application Lifecycle Management',
+    title: translate({
+      message: 'Unified Infrastructure, LLM & Application Lifecycle Management',
+      id: 'home-feature-mgmt-title'
+    }),
+    description: translate({
+      message: 'Offers a unified interface that makes it easy for both developers and non-developers to manage infrastructure, ML clusters, models, and user workloads.',
+      id: 'home-feature-mgmt-desc'
+    }),
     Img: require('@site/static/img/landing_feature2.png').default,
-    description: (
-      <>
-        Offers a unified interface that makes it easy for both developers and non-developers to manage infrastructure, ML clusters, models, and user workloads.
-      </>
-    ),
+    Svg: null,
   },
   {
-    title: 'Private Deployment, Ideal for Edge & Branch',
+    title: translate({
+      message: 'Private Deployment, Ideal for Edge & Branch',
+      id: 'home-feature-deploy-title'
+    }),
     Svg: require('@site/static/img/landing_feature3.svg').default,
-    description: (
-      <>
-        Supports private deployments with optimized resources for running models and workloads in edge and branch networks. It also allows for horizontal scaling to meet future business needs.
-      </>
-    ),
+    description: translate({
+      message: 'Supports private deployments with optimized resources for running models and workloads in edge and branch networks. It also allows for horizontal scaling to meet future business needs.',
+      id: 'home-feature-deploy-desc'
+    }),
+    Img: null,
   },
 ];
 
