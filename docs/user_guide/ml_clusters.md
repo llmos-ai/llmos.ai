@@ -84,6 +84,10 @@ hello world
 
 Now let's submit a job to the remote ML cluster using the Python SDK.
 
+:::note
+The LLMOS API token can be obtained from the [API Keys](../user_and_auth/api-keys) page.
+:::
+
 ```python
 # ray-job.py
 from ray.job_submission import JobSubmissionClient, JobStatus

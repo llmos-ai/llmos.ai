@@ -1,0 +1,8 @@
+{
+  "label": "用户 & RBAC 管理",
+  "position": 90,
+  "link": {
+    "type": "generated-index",
+    "description": "Users & authentication guide"
+  }
+}

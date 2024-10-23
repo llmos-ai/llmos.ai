@@ -1,0 +1,8 @@
+{
+  "label": "用户指南",
+  "position": 40,
+  "link": {
+    "type": "generated-index",
+    "description": "LLMOS user guide"
+  }
+}

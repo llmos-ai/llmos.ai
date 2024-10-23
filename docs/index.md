@@ -5,7 +5,8 @@ title: Overview
 
 # LLMOS Overview
 
-LLMOS is an open-source, cloud-native infrastructure software tailored for managing AI applications and large language models(LLMs) on your AI workstation or GPU machines.
+LLMOS is an open-source cloud-native AI infrastructure software designed to simplify the management of AI applications and Large Language Models (LLMs)  on your AI workstation or GPU machines. 
+With LLMOS, organizations can effortlessly deploy, scale, and operate machine learning workflows while reducing the complexity often associated with AI development and operations.
 
 ## LLMOS Architecture
 The following diagram describes the high-level LLMOS architecture:

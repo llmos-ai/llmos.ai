@@ -93,7 +93,7 @@ To use the metrics server, ensure all nodes can communicate with each other on p
 |----------|--------------|-----------|-------------|-------------------------------------------|
 | TCP      | 2379-2380    | Servers   | Servers     | Required for HA setups with embedded etcd |
 | TCP      | 6443         | Workers   | Servers     | Kubernetes API Server                     |
-| TCP      | 8443         | All nodes | All nodes   | LLMOS dashboard and API                   |
+| TCP      | 8443         | All nodes | All nodes   | LLMOS dashboard and API Server            |
 | UDP      | 8472         | All nodes | All nodes   | For system VXLAN network                  |
 | TCP      | 10250        | All nodes | All nodes   | Metrics server                            |
 | TCP      | 5001, 6443   | All nodes | All nodes   | Embedded distributed registry (Spegel)    |

@@ -6,7 +6,7 @@ title: System Storage
 LLMOS has two built-in storage options:
 
 - **[Local Path Storage](https://github.com/rancher/local-path-provisioner)**: This is a basic storage service that saves data on the host machine. It's best for testing or single-node setups, but it doesn't support high availability (HA) or fault tolerance.
-- **[Ceph Cluster Storage](https://rook.io/docs/rook/latest-release/Getting-Started/intro)**: This is a distributed storage service offering high availability and data fault tolerance. It supports block and object storage, making it suitable for medium to large production environments.
+- **[Ceph Cluster Storage](https://rook.io/docs/rook/latest-release/Getting-Started/intro)**: This is a distributed storage service offering high availability and data fault tolerance. It supports block and filesystem storage, making it suitable for medium to large production environments.
 
 :::info
 **Note**: Ceph storage isn't enabled by default. You'll need to turn it on and ensure your cluster has enough resources(minimum 4 vCPUs and 8 GB RAM). See the [device prerequisites](#ceph-prerequisites) below.
