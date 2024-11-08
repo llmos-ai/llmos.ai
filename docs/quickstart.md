@@ -60,6 +60,6 @@ After installing LLMOS, access the dashboard by navigating to `https://<server-i
 ## Examples
 
 To learn more about using LLMOS, explore the following resources:
-- [Chat with LLMOS Models](./user_guide/llm_management/serve)
-- [Creating a Machine Learning Cluster](./user_guide/ml_clusters)
-- [Creating a Jupyter Notebook](./user_guide/llm_management/notebooks#create-a-notebook)
+- [Chat with LLMOS Models](user_guide/llm_management/serve)
+- [Creating a Machine Learning Cluster](user_guide/ml_clusters)
+- [Creating a Jupyter Notebook](user_guide/llm_management/notebooks#create-a-notebook)
