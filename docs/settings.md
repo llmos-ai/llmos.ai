@@ -31,64 +31,77 @@ Only admin users can manage these settings.
 {
   "code-server": [
     {
-      "containerImage": "oneblockai/codeserver-python:latest",
+      "containerImage": "ghcr.io/oneblock-ai/codeserver-python:v0.1.0",
       "description": "Visual Studio Code + Conda Python",
       "default": true
     }
   ],
   "jupyter": [
     {
-      "containerImage": "oneblockai/jupyter-scipy:latest",
+      "containerImage": "ghcr.io/oneblock-ai/jupyter-scipy:v0.1.0",
       "description": "JupyterLab + PyTorch",
       "default": true
     },
     {
-      "containerImage": "oneblockai/jupyter-pytorch:latest",
+      "containerImage": "ghcr.io/oneblock-ai/jupyter-pytorch:v0.1.0",
       "description": "JupyterLab + PyTorch"
     },
     {
-      "containerImage": "oneblockai/jupyter-pytorch-full:latest",
+      "containerImage": "ghcr.io/oneblock-ai/jupyter-pytorch-full:v0.1.0",
       "description": "JupyterLab + PyTorch + Common Packages"
     },
     {
-      "containerImage": "oneblockai/jupyter-pytorch-cuda:latest",
+      "containerImage": "ghcr.io/oneblock-ai/jupyter-pytorch-cuda:v0.1.0",
       "description": "JupyterLab + PyTorch + CUDA"
     },
     {
-      "containerImage": "oneblockai/jupyter-pytorch-cuda-full:latest",
+      "containerImage": "ghcr.io/oneblock-ai/jupyter-pytorch-cuda-full:v0.1.0",
       "description": "JupyterLab + PyTorch + CUDA + Common Packages"
     },
     {
-      "containerImage": "oneblockai/jupyter-tensorflow:latest",
+      "containerImage": "ghcr.io/oneblock-ai/jupyter-tensorflow:v0.1.0",
       "description": "JupyterLab + PyTorch"
     },
     {
-      "containerImage": "oneblockai/jupyter-tensorflow-full:latest",
+      "containerImage": "ghcr.io/oneblock-ai/jupyter-tensorflow-full:v0.1.0",
       "description": "JupyterLab + PyTorch + Common Packages"
     },
     {
-      "containerImage": "oneblockai/jupyter-tensorflow-cuda:latest",
+      "containerImage": "ghcr.io/oneblock-ai/jupyter-tensorflow-cuda:v0.1.0",
       "description": "JupyterLab + PyTorch + CUDA"
     },
     {
-      "containerImage": "oneblockai/jupyter-tensorflow-cuda-full:latest",
+      "containerImage": "ghcr.io/oneblock-ai/jupyter-tensorflow-cuda-full:v0.1.0",
       "description": "JupyterLab + PyTorch + CUDA + Common Packages"
+    },
+    {
+      "containerImage": "ghcr.io/oneblock-ai/jupyter-pipeline:v0.1.0",
+      "description": "JupyterLab + Elyra Pipeline"
     }
   ],
   "rstudio": [
     {
-      "containerImage": "oneblockai/rstudio-tidyverse:latest",
+      "containerImage": "ghcr.io/oneblock-ai/rstudio-tidyverse:v0.1.0",
       "description": "RStudio + Tidyverse",
       "default": true
     }
   ]
 }
 ```
+### `global-system-image-registry`
+| Type    | Default | Description                                                                      |
+|---------|---------|----------------------------------------------------------------------------------|
+| String  | ""      | Default registry for LLMOS operator & system images (e.g., myregistry.com:5000). |
 
 ### `log-level`
 | Type    | Default | Description                                     |
 |---------|---------|-------------------------------------------------|
 | String  | info    | Defines the log level for the LLMOS API server. |
+
+### `model-service-default-image`
+| Type    | Default | Description                                       |
+|---------|---------|---------------------------------------------------|
+| String  | ""      | Default serving image for the LLMOS modelService. |
 
 ### `server-url`
 | Type   | Default | Description                                                                                                   |
