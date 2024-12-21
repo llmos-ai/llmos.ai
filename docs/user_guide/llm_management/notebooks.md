@@ -17,19 +17,23 @@ With notebooks, you can easily create and manage lightweight notebook environmen
 ### Create a Notebook
 Getting started with notebooks is easy.
 
-1. Open the LLMOS Dashboard in your browser and go to the **LLM Management > Notebooks** page.
+1. Open the LLMOS Dashboard in your browser and go to the **LLMOS Management > Notebooks** page.
 1. Click **Create** in the top right corner.
 1. Select notebook **type** and the image you want to use for your notebook server.
-1. Specify the name, namespace, resources and persistent storage(volume) setting of your notebook server.
    ![notebook-create](/img/docs/notebook-create-general.png)
+1. Specify the name, namespace, resources and persistent storage(volume) setting of your notebook server.
+   ![notebook-create](/img/docs/notebook-edit-resources.png)
 1. Click **Visit** to visiting your notebook server once it has been provisioned.
    ![notebook-visit](/img/docs/notebook-visit.png)
 
   ![notebook-juypter](/img/docs/notebook-jupyter.png)
-   - the default workspace is `/home/jovyan`
+
+:::note 
+The workspace of the default notebook images is `/home/jovyan`
+:::
 
 ### Notebook Images
-LLMOS currently provides three types of notebook images for you to choose from, but you can easily add your own images via the `default-notebook-images` setting:
+LLMOS currently provides three types of notebook images for you to choose from, but you can easily add your own images via the `default-notebook-images` [setting](../../settings):
 - [JupyterLab](https://github.com/jupyterlab/jupyterlab)
 - [Visual Studio Code \(code-server\)](https://github.com/coder/code-server)
 - [RStudio](https://github.com/rstudio/rstudio)
