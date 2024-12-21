@@ -12,9 +12,54 @@ mkdir -p /etc/llmos
 cat > /etc/llmos/config.yaml << EOF
 role: cluster-init
 token: mytoken
+#mirror: cn # enable mirror to accelerate download speed for CN users
 EOF
 ```
 
+## Configuration Parameters
+
+### Cluster-init Role Parameters
+| Parameter                   | Description                                                                                                                                                                      | Default Value  |
+|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------|
+| `llmosOperatorVersion`      | LLMOS Operator version to be installed. Fetched from the latest repo if not specified.                                                                                           |                |
+| `chartRepo`                 | LLMOS chart repository, set to `latest`, `rc`, or `dev`. Defaults to latest. Do not use `rc` or `dev` in production.                                                             | `latest`       |
+| `kubernetesVersion`         | Kubernetes version to be installed. Defaults to a stable k3s version if not specified.                                                                                           | `v1.31.3+k3s1` |
+| `operatorValues`            | Overwrite default values of the LLMOS Operator Helm chart. Refer to [values.yaml](https://github.com/llmos-ai/llmos-operator/blob/main/deploy/charts/llmos-operator/values.yaml) |                |
+| `globalSystemImageRegistry` | Default registry for LLMOS operator & system addon container images.                                                                                                             |                |
+| `mirror`                    | Specify the mirror registry for LLMOS bootstrap. Currently only `cn` option is supported.                                                                                        |                |
+| `registries`                | Content for the [registries.yaml](https://docs.k3s.io/installation/private-registry#registries-configuration-file) file used by the k8s cluster.                                 |                |
+| `systemDefaultImage`        | Default registry for k8s runtime container images.                                                                                                                               |                |
+| `tlsSans`                   | Additional SANs (hostnames) for the TLS certificate generated for port 6443. e.g., `llmos.example.com`                                                                           |                |
+| `preInstructions`           | Commands to run before bootstrapping the node.  Refer to [Instructions](#instructions)                                                                                           |                |
+| `postInstructions`          | Commands to run after bootstrapping the node. Refer to [Instructions](#instructions)                                                                                             |                |
+| `resources`                 | Custom Kubernetes resources to create after the LLMOS operator is bootstrapped.                                                                                                  |                |
+| `runtimeInstallerImage`     | **Advanced:** Override the Kubernetes system agent installer image.                                                                                                              |                |
+| `llmosInstallerImage`       | **Advanced:** Override the LLMOS operator installer image.                                                                                                                       |                |
+
+
+### All Roles Parameters
+| Parameter                 | Description                                                                                                              | Default Value |
+|---------------------------|--------------------------------------------------------------------------------------------------------------------------|---------------|
+| `role`                    | Role of this node. The cluster must start with one node as `role=cluster-init`.                                          |               |
+| `server`                  | URL for joining a node to the LLMOS cluster. e.g., `https://server-url:6443`                                             |               |
+| `token`                   | Shared secret for joining nodes to the cluster.                                                                          |               |
+| `nodeName`                | Set the node name.                                                                                                       |               |
+| `address`                 | External IP address for the node in Cluster.                                                                             |               |
+| `internalAddress`         | Internal IP address for the node.                                                                                        |               |
+| `taints`                  | Taints to apply to the node upon creation.                                                                               |               |
+| `labels`                  | Labels to apply to the node upon creation.                                                                               |               |
+| `extraConfig`             | **Advanced**: Additional [k3s configuration](https://docs.k3s.io/installation/configuration) to be applied in bootstrap. |               |
+
+
+#### Instructions
+| Field        | Description                                                      | Data Type |
+|--------------|------------------------------------------------------------------|-----------|
+| `name`       | Task name (e.g., `custom-pre-task`)                              | string    |
+| `image`      | Optional image to extract and use                                | string    |
+| `env`        | Environment variables (e.g., `FOO=BAR`)                          | []        |
+| `args`       | Program arguments (e.g., `arg1`, `arg2`)                         | []        |
+| `command`    | Command to execute (e.g., `/bin/dosomething`)                    | string    | 
+| `saveOutput` | Save output to `/var/lib/llmos/plan/plan-output.json` (optional) | bool      |
 ### Full Configuration Example
 
 ```yaml
@@ -23,13 +68,24 @@ EOF
 ################################################################
 
 # LLMOS Operator version to be installed
-llmosOperatorVersion: v0.1.0
+llmosOperatorVersion: v0.2.0
 
 # LLMOS chart repository, set to "latest", "rc" or "dev". Defaults to latest.
 chartRepo: latest
 
 # Kubernetes version to be installed. Defaults to a stable k3s version if not specified.
-kubernetesVersion: v1.30.5+k3s1
+kubernetesVersion: v1.31.3+k3s1
+
+# Default registry for LLMOS system component images.
+# More details: https://github.com/llmos-ai/llmos-operator/blob/main/deploy/charts/llmos-operator/values.yaml
+globalSystemImageRegistry: registry.example.com:5000
+
+# Content for the `registries.yaml` file used by k8s runtime.
+# Refer to https://rancher.com/docs/k3s/latest/en/installation/private-registry/ for details.
+registries: {}
+
+# Mirror registry option to bootstrap the LLMOS installer & k8s runtime.
+mirror: cn
 
 # Custom values for the LLMOS Operator Helm chart.
 # See https://github.com/llmos-ai/llmos-operator/blob/main/deploy/charts/llmos-operator/values.yaml
@@ -80,14 +136,6 @@ resources:
     data:
       key: value
 
-# Content for the `registries.yaml` file used by k3s.
-# Refer to https://rancher.com/docs/k3s/latest/en/installation/private-registry/ for details.
-registries: {}
-
-# Default registry for LLMOS operator container images.
-# More details: https://github.com/llmos-ai/llmos-operator/blob/main/deploy/charts/llmos-operator/values.yaml
-globalImageRegistry: someprefix.example.com:5000
-
 # Advanced: Override the Kubernetes system agent installer image.
 runtimeInstallerImage: ...
 
@@ -129,46 +177,3 @@ labels:
 # Advanced: Additional k3s configuration to be placed in `/etc/rancher/k3s/config.yaml.d/40-llmos.yaml`.
 extraConfig: {}
 ```
-
-## Configuration Parameters
-
-### Cluster-init Role Parameters
-| Parameter                 | Description                                                                                                                                                                      | Default Value  |
-|---------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------|
-| `llmosOperatorVersion`    | LLMOS Operator version to be installed. Fetched from the latest repo if not specified.                                                                                           |                |
-| `chartRepo`               | LLMOS chart repository, set to `latest`, `rc`, or `dev`. Defaults to latest. Do not use `rc` or `dev` in production.                                                             | `latest`       |
-| `kubernetesVersion`       | Kubernetes version to be installed. Defaults to a stable k3s version if not specified.                                                                                           | `v1.30.5+k3s1` |
-| `operatorValues`          | Overwrite default values of the LLMOS Operator Helm chart. Refer to [values.yaml](https://github.com/llmos-ai/llmos-operator/blob/main/deploy/charts/llmos-operator/values.yaml) |                |
-| `tlsSans`                 | Additional SANs (hostnames) for the TLS certificate generated for port 6443. e.g., `llmos.example.com`                                                                           |                |
-| `preInstructions`         | Commands to run before bootstrapping the node.  Refer to [Instructions](#instructions)                                                                                           |                |
-| `postInstructions`        | Commands to run after bootstrapping the node. Refer to [Instructions](#instructions)                                                                                             |                |
-| `resources`               | Custom Kubernetes resources to create after the LLMOS operator is bootstrapped.                                                                                                  |                |
-| `registries`              | Content for the [registries.yaml](https://docs.k3s.io/installation/private-registry#registries-configuration-file) file used by the k3s cluster.                                 |                |
-| `globalImageRegistry`     | Default registry for LLMOS operator container images.                                                                                                                            |                |
-| `runtimeInstallerImage`   | **Advanced:** Override the Kubernetes system agent installer image.                                                                                                              |                |
-| `llmosInstallerImage`     | **Advanced:** Override the LLMOS operator installer image.                                                                                                                       |                |
-
-
-### All Roles Parameters
-| Parameter                 | Description                                                                                                              | Default Value |
-|---------------------------|--------------------------------------------------------------------------------------------------------------------------|---------------|
-| `role`                    | Role of this node. The cluster must start with one node as `role=cluster-init`.                                          |               |
-| `server`                  | URL for joining a node to the LLMOS cluster. e.g., `https://server-url:6443`                                             |               |
-| `token`                   | Shared secret for joining nodes to the cluster.                                                                          |               |
-| `nodeName`                | Set the node name.                                                                                                       |               |
-| `address`                 | External IP address for the node in Cluster.                                                                             |               |
-| `internalAddress`         | Internal IP address for the node.                                                                                        |               |
-| `taints`                  | Taints to apply to the node upon creation.                                                                               |               |
-| `labels`                  | Labels to apply to the node upon creation.                                                                               |               |
-| `extraConfig`             | **Advanced**: Additional [k3s configuration](https://docs.k3s.io/installation/configuration) to be applied in bootstrap. |               |
-
-
-#### Instructions
-| Field        | Description                                                      | Data Type |
-|--------------|------------------------------------------------------------------|-----------|
-| `name`       | Task name (e.g., `custom-pre-task`)                              | string    |
-| `image`      | Optional image to extract and use                                | string    |
-| `env`        | Environment variables (e.g., `FOO=BAR`)                          | []        |
-| `args`       | Program arguments (e.g., `arg1`, `arg2`)                         | []        |
-| `command`    | Command to execute (e.g., `/bin/dosomething`)                    | string    | 
-| `saveOutput` | Save output to `/var/lib/llmos/plan/plan-output.json` (optional) | bool      |

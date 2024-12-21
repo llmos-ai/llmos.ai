@@ -13,11 +13,11 @@ LLMOS 平台通过 `ModelService` 简化了大语言模型(LLM)的部署, 为用
 ### 通用配置
 1. 为您的模型服务指定名称和命名空间。
 2. 输入模型名称，可以是来自 [Hugging Face](https://huggingface.co/models) 的模型（例如，`Qwen/Qwen2.5-0.5B-Instruct`）或本地持久卷的模型路径（例如，`/root/.cache/huggingface/hub/models--Qwen--Qwen2.5-0.5B-Instruct`）。
-3. （可选）在 **Arguments** 字段中添加任何附加 [引擎参数](https://docs.vllm.ai/en/latest/models/engine_args.html)，如 `--dtype` 或 `--max-model-len`。
+3. （可选）在 **Arguments** 字段中添加任何附加 [引擎参数](https://docs.vllm.ai/en/latest/usage/engine_args.html)，如 `--dtype` 或 `--max-model-len`。
 4. （可选）添加 Hugging Face 配置：
    - 如果模型仅被授权下载，请选择包含 Hugging Face 访问令牌的 [Secret Credential](#添加-huggingface-令牌)。
    - 如有必要，指定自定义的 Hugging Face 镜像 URL（例如，`https://hf-mirror.com/`）。
-5. （可选）在 **Environment Variables** 字段中为模型服务添加其他 [环境变量](https://docs.vllm.ai/en/latest/serving/env_vars.html)。
+5. （可选）在 **Environment Variables** 字段中为模型服务添加其他 [环境变量](https://docs.vllm.ai/en/latest/usage/env_vars.html)。
 
 ![model-service-create-general](/img/docs/modelservice-create-general.png)
 
