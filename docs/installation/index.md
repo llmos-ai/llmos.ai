@@ -20,6 +20,13 @@ To bootstrap a new cluster, run the following command on a bare-metal server or 
 curl -sfL https://get-llmos.1block.ai | sh -s - --cluster-init --token mytoken
 ```
 
+:::note
+For CN users, you can use the following command to accelerate the installation:
+```
+sudo curl -sfL https://get-llmos.1block.ai | sh -s - --cluster-init --token mytoken --mirror cn
+```
+:::
+
 ### Join a Cluster
 
 To add more nodes to the cluster, you can assign them the **server** role to increase the number of management nodes or the **agent** role to add more worker nodes. 

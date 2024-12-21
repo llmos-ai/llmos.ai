@@ -16,7 +16,7 @@ title: 快速入门
 LLMOS 可以安装在物理服务器或虚拟机上。引导创建一个**新集群**，请按照以下步骤操作：
 
 ```shell
-curl -sfL https://get-llmos.1block.ai | sh -s - --cluster-init --token mytoken
+curl -sfL https://get-llmos.1block.ai | sh -s - --cluster-init --token mytoken --mirror cn
 ```
 
 查看安装日志，运行 `journalctl -u llmos -f`。
@@ -63,6 +63,6 @@ export CONTAINERD_NO_PROXY=127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16 #
 ## 示例
 
 要了解更多关于 LLMOS 的使用方法，请探索以下资源：
-- [与 LLMOS 模型聊天](./user_guide/llm_management/serve)
+- [与 LLMOS 模型聊天](./user_guide/llm_management/modelservice)
 - [创建机器学习集群](./user_guide/ml_clusters)
 - [创建 Jupyter Notebook](./user_guide/llm_management/notebooks#创建-notebook)

@@ -17,6 +17,13 @@ LLMOS can be installed to a bare-metal server or a virtual machine. To bootstrap
 curl -sfL https://get-llmos.1block.ai | sh -s - --cluster-init --token mytoken
 ```
 
+:::note
+For CN users, you can use the following command to accelerate the installation:
+```
+sudo curl -sfL https://get-llmos.1block.ai | sh -s - --cluster-init --token mytoken --mirror cn
+```
+:::
+
 To monitor installation logs, run `journalctl -u llmos -f`.
 
 After installation, you may optionally add a worker node to the cluster with the following command:
@@ -60,6 +67,6 @@ After installing LLMOS, access the dashboard by navigating to `https://<server-i
 ## Examples
 
 To learn more about using LLMOS, explore the following resources:
-- [Chat with LLMOS Models](user_guide/llm_management/serve)
+- [Chat with LLMOS Models](user_guide/llm_management/modelservice)
 - [Creating a Machine Learning Cluster](user_guide/ml_clusters)
 - [Creating a Jupyter Notebook](user_guide/llm_management/notebooks#create-a-notebook)

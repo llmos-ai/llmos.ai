@@ -26,7 +26,7 @@ LLMOS 是一款开源的云原生基础设施软件，专为加速 AI 应用开�
 ## 主要特性
 - **简单的[安装](./quickstart)**：支持在 x86_64 和 ARM64 架构上简单安装，提供即开即用的用户体验。
 - **无缝的[Notebook](./user_guide/llm_management/notebooks)集成**：集成了流行的Notebook环境，如 **Jupyter**、**VSCode** 和 **RStudio**，让数据科学家和开发者无需复杂配置即可在熟悉的工具中高效工作。
-- **用于 LLM 服务的 [ModelService](./user_guide/llm_management/serve)**：通过与 **OpenAI 兼容的 API**，使用 ModelService 轻松部署私有化的LLM。
+- **用于 LLM 服务的 [ModelService](./user_guide/llm_management/modelservice)**：通过与 **OpenAI 兼容的 API**，使用 ModelService 轻松部署私有化的LLM。
 - **[机器学习集群](./user_guide/ml_clusters)**：支持分布式计算，具有并行处理能力，并包含领先的 AI 库，提升机器学习工作流的性能，尤其适用于大规模模型调优和数据集处理等任务。
 - **内置的[分布式存储](./user_guide/storage/system-storage)**：提供高性能、高冗余的内置分布式存储，适用于 AI 和 LLM 应用的需求，具备强大的可扩展块存储和文件系统存储。
 - **[用户](./user_and_auth/user)和[RBAC 管理](./user_and_auth/role-template)**：通过基于角色的访问控制（RBAC）和角色模板简化用户管理，确保资源分配的安全与效率。

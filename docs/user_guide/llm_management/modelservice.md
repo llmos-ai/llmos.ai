@@ -8,32 +8,44 @@ The LLMOS platform provides a streamlined way to serve machine learning models u
 ![model-service-list](/img/docs/modelservice-list.png)
 
 ## Creating a Model Service
-You can create one or more model services from the **LLM Management > Model Services** page.
+
+You can create one or more model services from the **LLMOS Management > Model Services** page.
 
 ### General Configuration
-1. Specify the name and namespace for your model service.
-2. Enter the model name, either from [Hugging Face](https://huggingface.co/models) (e.g., `Qwen/Qwen2.5-0.5B-Instruct`) or a persisted model volume path (e.g., `/root/.cache/huggingface/hub/models--Qwen--Qwen2.5-0.5B-Instruct`).
-3. (Optional) Add any [additional engine arguments](https://docs.vllm.ai/en/latest/models/engine_args.html), such as `--dtype` or `--max-model-len`, in the **Arguments** field.
+
+1. Specify the name and namespace of your model service.
+2. Select the model **Source** and enter the **Model Name**, currently we support download models from [Hugging Face](https://huggingface.co/models), [ModelScope](https://modelscope.cn/models) or using a Local Path.
+   - For either a Hugging Face or ModelScope model, specify the model name copied from the model registry (e.g., `Qwen/Qwen2.5-0.5B-Instruct`) 
+   - If you want to use a local path model, specify the correct volume path (e.g., `/root/.cache/huggingface/hub/models--Qwen--Qwen2.5-0.5B-Instruct`).
+3. (Optional) Add [engine arguments](https://docs.vllm.ai/en/latest/usage/engine_args.html) if applicable, such as `--dtype=half --max-model-len=4096`, in the **Arguments** field.
 4. (Optional) Add Hugging Face Configuration:
-   - If the model is only authorized for downloading, select a [secret credential](#adding-a-huggingface-token) that contains the Hugging Face access token.
-   - Specify a custom Hugging Face Mirror URL if necessary (e.g., `https://hf-mirror.com/`).
-5. (Optional) Add additional [environment variables](https://docs.vllm.ai/en/latest/serving/env_vars.html) for the model service in the **Environment Variables** field.
+   - If the model requires authentication for downloading, select a [secret credential](#adding-a-huggingface-token) that contains a valid [Hugging Face access token](#adding-a-huggingface-token).
+   - Specify a custom **Hugging Face Mirror URL** if you need to access the model through a custom proxy(e.g., `https://hf-mirror.com/`).
+5. (Optional) Add additional [environment variables](https://docs.vllm.ai/en/latest/usage/env_vars.html) for the model service through the **Environment Variables** section if needed.
 
 ![model-service-create-general](/img/docs/modelservice-create-general.png)
 
 ### Resource Configuration
-1. **CPU and Memory**: Set CPU and memory resources for the model service.
-   - You may refer to [LLM numbers](https://github.com/ray-project/llm-numbers) for getting a better understanding of the resources consumed by the model.
+
+:::note
+You may refer to [LLM numbers](https://github.com/ray-project/llm-numbers) for getting a better understanding about the GPU resources consumed by the Large-Language-Model.
+:::
+
+1. **CPU and Memory**: Both CPU and memory resources are required for the model.
 2. **GPU Resources**:
    - Configure the desired **GPU** and **Runtime Class**(default to **nvidia**).
-   - A minimum of **1 GPU** is required for the model service with the default `vllm-openai` image.
+      - A minimum of **1 GPU** is required for the model service with the default `vllm-openai` image.
+      - If your model is too large to fit in a single GPU, but it can fit in a single node with multiple GPUs, you can use tensor parallelism. The tensor parallel size is the number of GPUs you want to use. For example, if you have 4 GPUs in a single node, you can set the tensor parallel size to 4.
+   - Click **Enable vGPU** if you want uses a shared GPU device. Specify the `vGPU` memory size(in MiB) and `vGPU Cores`(default to 100%) limitation if needed.
 
 ![model-service-resources](/img/docs/modelservice-create-resources.png)
 
 ### Volumes
-1. **Persistent Volume**: A default persistent volume is mounted to `/root/.cache/huggingface/hub` to store downloaded model files.
-   - (Optional)You can add an existing volume that contains the model files to skip the download process using the **Add Volume** button.
-   - (Optional)You can add a shared volume(with StorageClass support **ReadWriteMany** mode) to share model files across multiple model services.
+1. **Persistent Volume**: A default persistent volume is mounted to `/root/.cache` to store downloaded model files.
+   - If you prefer to use shared model files across multiple model services, you can replace the default volume with your custom persistent volume(with a StorageClass that must support **ReadWriteMany** mode).
+   - If you choose to use a **local path** model, you need to add an existing volume that contains the model files to skip the downloading process.
+     - Click the **Add Volume** option at the bottom of the page.
+     - And you can remove the default `model-dir` volume if you don't need it.
 2. **Shared Memory Allocation**: Mount an `emptyDir` volume to `/dev/shm` with **Medium** set to **Memory**. This creates a temporary in-memory filesystem, ideal for PyTorch tensor parallel inference, which uses shared memory between processes.
    - If not enabled, the model service will use the default shared memory(shm) size of 64 MiB.
 
@@ -45,7 +57,7 @@ You can specify node constraints for scheduling your model service using node la
 ![model-service-node-scheduling](/img/docs/modelservice-node-scheduling.png)
 
 :::note
-For more details, refer to the [Kubernetes Node Affinity Documentation](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity).
+For more details of the node scheduling, please refer to the [Kubernetes Node Affinity Documentation](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity).
 :::
 
 ## Accessing Model Service APIs
@@ -152,16 +164,17 @@ You can also interact with model services using the [Notebooks](notebooks.md), w
 :::note
 Within your LLMOS cluster, you can connect to the model service using its internal DNS name.
 
-To get the internal DNS name, Click the **Copy Internal URL** button of the model service.
+To get the internal DNS name, click the **Copy Internal URL** button of the model service.
 :::
 
 
 ## Adding a HuggingFace Token
-If the model is authorized for downloading, you will need to add a [HuggingFace token](https://huggingface.co/docs/hub/en/security-tokens) when creating the model service. To add a new HuggingFace token:
+
+If the model requires authentication for downloading, you will need to add a [HuggingFace token](https://huggingface.co/docs/hub/en/security-tokens) when creating the model service. To add a new HuggingFace token:
 1. Go to the **Advanced > Secrets** page and click the **Create** button 
 2. Select the **Opaque** type.
    ![secret-create-opaque](/img/docs/secret-types-opaque.png)
-3. Select the **Namespace** and specify a meaningful **Name**.
-4. Specify the **key** e.g, `token`, and the **value** as your HuggingFace token.
+3. Select the **Namespace** same as the model service namespace, and specify a meaningful **Name**(e.g., my-hf-token).
+4. Specify the **key** e.g, `token`, and the **value** as your HuggingFace generated token.
    ![secret-create-hf-token](/img/docs/secret-create-hf-token.png)
-5. Click **Create** to save the secret. And you should see selected secret when creating the model service within the same namespace.
+5. Click **Create** to save the secret. And now you should be able to select the secret when creating the model service within the same namespace.
