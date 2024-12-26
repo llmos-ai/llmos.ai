@@ -31,14 +31,6 @@ The `llmos-public` namespace is a designated space for resources that are access
 
 If you need to offer a service to all users within your company or organization, this namespace is ideal for hosting such publicly accessible resources.
 
-### User Namespace
-
-In LLMOS, admins can create new namespaces and assign normal users to these namespaces with different [roles](../../user_and_auth/role-template#namespace-roles).
-
-Normal user can create resources within the namespace they are assigned to but cannot create a new namespace.
-
-To manage namespaces, go to the **Advanced > Namespace** page.
-
 
 ### User Namespace
 

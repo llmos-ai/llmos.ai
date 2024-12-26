@@ -5,7 +5,7 @@ title: 快速入门
 
 # 快速入门
 
-本指南将帮助您使用默认的引导选项快速启动 LLMOS 集群。[安装](./installation)部分包含有关引导配置选项的更多详细信息。
+本指南将帮助您使用默认的引导选项快速启动 LLMOS 集群。[安装指南](./installation)包含有关引导配置选项的更多详细信息。
 
 :::info
 在继续之前，请确保您的节点符合[要求](./installation/requirements.md)。
@@ -20,6 +20,8 @@ curl -sfL https://get-llmos.1block.ai | sh -s - --cluster-init --token mytoken -
 ```
 
 查看安装日志，运行 `journalctl -u llmos -f`。
+
+有关更高级的配置，请查看 [LLMOS 配置](/docs/installation/configurations) 页面。
 
 (可选）安装完成后，您也可以通过以下命令将 Worker 节点添加到集群中：
 

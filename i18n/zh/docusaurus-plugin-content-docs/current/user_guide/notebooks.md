@@ -20,9 +20,14 @@ Notebooks 提供了一种在 LLMOS 集群内运行 JupyterLab、RStudio 和 VS C
 1. 在浏览器中打开 LLMOS Dashboard，并转到 **LLMOS Management > Notebooks** 页面。
 2. 点击右上角的 **Create**。
 3. 选择 Notebook **类型** 和您想用于 Notebook 服务器的镜像。
-4. 指定 Notebook 服务器的名称、命名空间、资源和持久存储（卷）设置。
    ![Notebook-create](/img/docs/notebook-create-general.png)
-5. 一旦 Notebook 服务器配置完成并启动，点击 **Visit** 访问您的 Notebook 服务器。
+4. 指定 Notebook 服务器的名称、命名空间、资源和持久存储（卷）设置。
+   - 如需使用 **GPU** 资源 , 选择 **GPU** 和 **Runtime Class**（默认：**nvidia**）。
+       - 最小值：最少使用 **1 个 vGPU**。
+   - 如无需占用完整的 **GPU** 资源，可开启 vGPU 设备共享并指定 `vGPU` 内存大小（以 MiB 为单位）和 `vGPU Cores`（默认：100%）。
+  ![Notebook-create-resources](/img/docs/notebook-create-resources.png)
+
+**结果:** 当 Notebook 服务器配置完成并成功启动， 可点击 **Visit** 访问您的 Notebook 服务器。
    ![Notebook-visit](/img/docs/notebook-visit.png)
 
 ![Notebook-juypter](/img/docs/notebook-jupyter.png)
@@ -39,3 +44,12 @@ LLMOS 目前提供三种类型的 Notebook 镜像供您选择，但您可以通�
 - 构建包含这些软件包的自定义镜像，或
 - 确保它们安装在持久卷支持的目录中。
 :::
+
+## Notebook 监控
+
+您可以通过 [LLMOS 监控](./monitoring/enable-monitoring) 来查看您的 Notebook 资源使用情况。查看的步骤如下：
+
+1. 点击列表中的 Notebook 名称，打开其详细信息页面。
+2. 转到 **监控指标** 标签，查看 CPU、内存、网络流量和磁盘 I/O 等使用数据。
+
+![notebook-monitoring-metrics](/img/docs/notebook-monitoring-metrics.png)

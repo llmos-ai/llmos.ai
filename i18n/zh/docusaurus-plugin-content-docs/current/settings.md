@@ -30,53 +30,57 @@ title: 全局设置
 {
   "code-server": [
     {
-      "containerImage": "oneblockai/codeserver-python:latest",
+      "containerImage": "ghcr.io/oneblock-ai/codeserver-python:v0.1.0",
       "description": "Visual Studio Code + Conda Python",
       "default": true
     }
   ],
   "jupyter": [
     {
-      "containerImage": "oneblockai/jupyter-scipy:latest",
+      "containerImage": "ghcr.io/oneblock-ai/jupyter-scipy:v0.1.0",
       "description": "JupyterLab + PyTorch",
       "default": true
     },
     {
-      "containerImage": "oneblockai/jupyter-pytorch:latest",
+      "containerImage": "ghcr.io/oneblock-ai/jupyter-pytorch:v0.1.0",
       "description": "JupyterLab + PyTorch"
     },
     {
-      "containerImage": "oneblockai/jupyter-pytorch-full:latest",
-      "description": "JupyterLab + PyTorch + 常用包"
+      "containerImage": "ghcr.io/oneblock-ai/jupyter-pytorch-full:v0.1.0",
+      "description": "JupyterLab + PyTorch + Common Packages"
     },
     {
-      "containerImage": "oneblockai/jupyter-pytorch-cuda:latest",
+      "containerImage": "ghcr.io/oneblock-ai/jupyter-pytorch-cuda:v0.1.0",
       "description": "JupyterLab + PyTorch + CUDA"
     },
     {
-      "containerImage": "oneblockai/jupyter-pytorch-cuda-full:latest",
-      "description": "JupyterLab + PyTorch + CUDA + 常用包"
+      "containerImage": "ghcr.io/oneblock-ai/jupyter-pytorch-cuda-full:v0.1.0",
+      "description": "JupyterLab + PyTorch + CUDA + Common Packages"
     },
     {
-      "containerImage": "oneblockai/jupyter-tensorflow:latest",
+      "containerImage": "ghcr.io/oneblock-ai/jupyter-tensorflow:v0.1.0",
       "description": "JupyterLab + PyTorch"
     },
     {
-      "containerImage": "oneblockai/jupyter-tensorflow-full:latest",
-      "description": "JupyterLab + PyTorch + 常用包"
+      "containerImage": "ghcr.io/oneblock-ai/jupyter-tensorflow-full:v0.1.0",
+      "description": "JupyterLab + PyTorch + Common Packages"
     },
     {
-      "containerImage": "oneblockai/jupyter-tensorflow-cuda:latest",
+      "containerImage": "ghcr.io/oneblock-ai/jupyter-tensorflow-cuda:v0.1.0",
       "description": "JupyterLab + PyTorch + CUDA"
     },
     {
-      "containerImage": "oneblockai/jupyter-tensorflow-cuda-full:latest",
-      "description": "JupyterLab + PyTorch + CUDA + 常用包"
+      "containerImage": "ghcr.io/oneblock-ai/jupyter-tensorflow-cuda-full:v0.1.0",
+      "description": "JupyterLab + PyTorch + CUDA + Common Packages"
+    },
+    {
+      "containerImage": "ghcr.io/oneblock-ai/jupyter-pipeline:v0.1.0",
+      "description": "JupyterLab + Elyra Pipeline"
     }
   ],
   "rstudio": [
     {
-      "containerImage": "oneblockai/rstudio-tidyverse:latest",
+      "containerImage": "ghcr.io/oneblock-ai/rstudio-tidyverse:v0.1.0",
       "description": "RStudio + Tidyverse",
       "default": true
     }
@@ -84,10 +88,20 @@ title: 全局设置
 }
 ```
 
+### `global-system-image-registry`
+| 类型    | 默认值   | 描述                                                   |
+|---------|---------|------------------------------------------------------|
+| 字符串  | ""      | LLMOS Operator 和系统镜像的默认仓库地址（例如：myregistry.com:5000）。 |
+
 ### `log-level`
-| 类型    | 默认值 | 描述                                                    |
-|---------|---------|---------------------------------------------------------|
-| String  | info    | 定义 LLMOS API 服务器的日志级别。                        |
+| 类型    | 默认值 | 描述                             |
+|---------|---------|--------------------------------|
+| String  | info    | 定义 LLMOS API 服务器的日志级别。         |
+
+### `model-service-default-image`
+| 类型    | 默认值   | 描述                                             |
+|--------|---------|---------------------------------------------------|
+| 字符串  | ""      | LLMOS ModelService 的默认服务镜像。               |
 
 ### `server-url`
 | 类型   | 默认值 | 描述                                                                                         |

@@ -50,5 +50,13 @@
   "sidebar.tutorialSidebar.category.Users & RBAC.link.generated-index.description": {
     "message": "用户， API Keys，RBAC权限与角色管理",
     "description": "The generated-index page description for category Users & RBAC in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.GPU Management": {
+    "message": "GPU 管理",
+    "description": "The label for category GPU Management in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Monitoring & Alerting": {
+    "message": "监控与告警",
+    "description": "The label for category Monitoring & Alerting in sidebar tutorialSidebar"
   }
 }

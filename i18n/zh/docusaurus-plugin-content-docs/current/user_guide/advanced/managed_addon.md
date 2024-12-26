@@ -5,11 +5,12 @@ title: 系统组件
 
 系统组件帮助管理 LLMOS 集群所需的额外组件。默认情况下，LLMOS 配备了一组开箱即用的系统附加组件。这些系统附加组件包括：
 
-- **Nvidia GPU Operator**：使用 [Nvidia GPU Operator](https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/index.html) 启用 LLMOS 集群对 Nvidia GPU 的支持。
-- **KubeRay Operator**：通过 [KubeRay Operator](https://www.ray.io/) 促进 LLMOS 集群中 Ray 集群和其他机器学习资源的管理。
-- **LLMOS Redis**：为您的集群提供 LLMOS 管理的 [Redis](https://redis.io/) 服务。
-- **Rook Ceph Operator**：使用 [Rook Ceph](https://rook.io/) Operator 为您的集群添加存储支持。
-- **系统更新控制器**：通过可定制的升级计划使用 [系统升级控制器](https://github.com/rancher/system-upgrade-controller) 管理 LLMOS 节点升级。
+- **LLMOS GPU Stack：** GPU 管理工具集，将虚拟 GPU (vGPU) 和多加速器支持引入到 LLMOS 平台，查看[更多详情](../gpu_management/enable-gpu-stack)。
+- **LLMOS 监控：** 使用 [Prometheus Operator](https://github.com/prometheus-operator/prometheus-operator) 提供 LLMOS 集群的监控和警报功能，查看[更多详情](../monitoring/enable-monitoring)。
+- **LLMOS Redis：** 提供一个 LLMOS 管理的 [Redis](https://redis.io/) 服务，用于系统服务和聊天存储。
+- **Rook Ceph Operator：** 使用 [Rook Ceph Operator](https://rook.io/) 为集群添加高可用、可冗余的分布式存储系统。
+- **KubeRay Operator：** 通过 [KubeRay Operator](https://www.ray.io/) 促进[机器学习集群](../ml_clusters)和其他机器学习资源在 LLMOS 集群中的管理。
+- **系统更新控制器：** 通过可定制的升级计划，使用 [System Upgrade Controller](https://github.com/rancher/system-upgrade-controller) 管理 LLMOS 节点的升级。
 
 ![Managed Addons](/img/docs/managed-addons.png)
 
