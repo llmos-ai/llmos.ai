@@ -70,7 +70,7 @@ Once Ceph is ready, you can use the `llmos-ceph-block` or `llmos-ceph-filesystem
 
 The Ceph toolbox is a container with tools for troubleshooting and testing. To access it:
 
-1. Go to **Storage > Ceph Clusters** and click `Execute Toolbox` next to the **llmos-ceph** cluster.
+1. Go to **Storage > Ceph Management > Ceph Clusters** and click `Execute Toolbox` next to the **llmos-ceph** cluster.
    ![Ceph Toolbox](/img/docs/ceph-toolbox.png)
 2. This opens a new window where the toolbox pod runs in the background. You can use tools like:
     ```shell

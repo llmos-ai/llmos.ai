@@ -68,7 +68,7 @@ LLMOS 平台通过 `ModelService` 简化了大语言模型(LLM)的部署, 为用
 ### API 使用示例
 
 :::note
-LLMOS API 令牌可以通过 [API Keys](../../user_and_auth/api-keys) 页面获得。
+LLMOS API 令牌可以通过 [API Keys](../user_and_auth/api-keys) 页面获得。
 :::
 
 #### cURL 示例

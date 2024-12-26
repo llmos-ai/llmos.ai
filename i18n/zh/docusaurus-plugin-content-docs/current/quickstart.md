@@ -63,6 +63,6 @@ export CONTAINERD_NO_PROXY=127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16 #
 ## 示例
 
 要了解更多关于 LLMOS 的使用方法，请探索以下资源：
-- [与 LLMOS 模型聊天](./user_guide/llm_management/modelservice)
+- [与 LLMOS 模型聊天](user_guide/modelservice.md)
 - [创建机器学习集群](./user_guide/ml_clusters)
-- [创建 Jupyter Notebook](./user_guide/llm_management/notebooks#创建-notebook)
+- [创建 Jupyter Notebook](user_guide/notebooks.md#创建-notebook)

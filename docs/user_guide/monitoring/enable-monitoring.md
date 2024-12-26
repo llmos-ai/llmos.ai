@@ -14,7 +14,7 @@ To enable monitoring, go to the **Cluster Tools** page as an admin user. Click *
 ![cluster-tools](/img/docs/cluster-tools.png)
 
 ### Requirements
-- If your cluster is a multi-node cluster and requires persistent storage for the monitoring, enable the [Ceph System Storage](../storage/system-storage.md) first before setting up monitoring.
+- If your cluster is a multi-node cluster and requires persistent storage for the monitoring, enable the [Ceph System Storage](../storage/system-storage) first before setting up monitoring.
 - Ensure your cluster meets the resource requirements:
   - **CPU**: At least `1250m`
   - **Memory**: At least `1210Mi`

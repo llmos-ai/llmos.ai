@@ -5,19 +5,20 @@ title: Managed Addons
 
 Managed Addons help manage additional components required for your LLMOS cluster. By default, LLMOS comes with a set of system addons that are enabled out of the box. These system addons include:
 
-- **Nvidia GPU Operator:** Enables support for Nvidia GPUs in your LLMOS cluster using the [Nvidia GPU Operator](https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/index.html).
+- **LLMOS GPU Stack:** A toolset that brings virtual GPUs (vGPU) and multi-accelerator support to your LLMOS platform, view more details [here](../gpu_management/enable-gpu-stack).
+- **LLMOS Monitoring:** Provides monitoring and alerting for your LLMOS cluster using the [Prometheus Operator](https://github.com/prometheus-operator/prometheus-operator), view more details [here](../monitoring/enable-monitoring).
+- **LLMOS Redis:** Provides a LLMOS-managed [Redis](https://redis.io/) service for system services and chat storage.
+- **Rook Ceph Operator:** Add built-in high-availability and fault-tolerant system storage to your cluster using the [Rook Ceph](https://rook.io/) operator.
 - **KubeRay Operator:** Facilitates the management of Ray clusters and other machine learning resources in your LLMOS cluster through the [KubeRay Operator](https://www.ray.io/).
-- **LLMOS Redis:** Provides a LLMOS-managed [Redis](https://redis.io/) service for your cluster.
-- **Rook Ceph Operator:** Adds storage support to your cluster using the [Rook Ceph](https://rook.io/) operator.
 - **System Update Controller:** Manages LLMOS node upgrades with the [System Upgrade Controller](https://github.com/rancher/system-upgrade-controller) through customizable upgrade plans.
 
 ![Managed Addons](/img/docs/managed-addons.png)
 
 :::note
-System addons are essential for LLMOS to function correctly. However, you can install additional addons beyond the default set as needed.
+System addons are essential for LLMOS to function correctly and can't be disabled. You can install additional addons beyond the default set as needed.
 :::
 
-## Creating a Managed Addon
+## Creating a Custom Addon
 
 Managed Addons use [Helm](https://helm.sh/) for installation and management. You can also add additional addons from external sources like the [Artifact Hub](https://artifacthub.io/).
 

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 4
 title: Model Service
 ---
 
@@ -85,7 +85,7 @@ The Model Service exposes a list of RESTful APIs compatible with [OpenAI's API](
 ### API Usage Examples
 
 :::note
-The LLMOS API token can be obtained from the [API Keys](../../user_and_auth/api-keys) page.
+The LLMOS API token can be obtained from the [API Keys](../user_and_auth/api-keys) page.
 :::
 
 #### cURL Example
@@ -174,7 +174,7 @@ To get the internal DNS name, click the **Copy Internal URL** button of the mode
 
 ## Model Service Monitoring
 
-The **Model Service** includes built-in metrics with [LLMOS Monitoring](../monitoring/enable-monitoring) to track performance and usage.
+The **Model Service** includes built-in metrics with [LLMOS Monitoring](./monitoring/enable-monitoring) to track performance and usage.
 
 - Click on the model service name in the list to open its details page.
 - Use the **Token Metrics** tab to view token-level metrics.
