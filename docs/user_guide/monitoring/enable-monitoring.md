@@ -14,7 +14,7 @@ To enable monitoring, go to the **Cluster Tools** page as an admin user. Click *
 ![cluster-tools](/img/docs/cluster-tools.png)
 
 ### Requirements
-- If your cluster is multi-node, enable the Ceph [System Storage](../storage/system-storage.md) first before setting up monitoring.
+- If your cluster is a multi-node cluster and requires persistent storage for the monitoring, enable the [Ceph System Storage](../storage/system-storage.md) first before setting up monitoring.
 - Ensure your cluster meets the resource requirements:
   - **CPU**: At least `1250m`
   - **Memory**: At least `1210Mi`
@@ -29,7 +29,8 @@ To enable monitoring, go to the **Cluster Tools** page as an admin user. Click *
 - **Retention**: How long metrics are kept. Default: `10d`.
 - **Retention Size**: Maximum size for stored metrics. Default: `50GiB`.
 - **Resources**: Set resource requests and limits for Prometheus pods.
-- **Persistent Storage**: To retain data across deployments and upgrades, configure persistent storage for Prometheus.
+- **Persistent Storage**: To retain data across deployments and upgrades, configure persistent storage for Prometheus
+  - At least `50Gi` is recommended.
 
 ![monitoring-edit-prometheus](/img/docs/monitoring-edit-prometheus.png)
 
@@ -47,9 +48,6 @@ Default dashboards provided by LLMOS Monitoring don’t require persistent stora
 ### AlertManager Settings
 
 - **Enable AlertManager**: Enabled by default.
-- **Config Secret**: A secret containing your AlertManager configuration will be created automatically in the `llmos-moniotirng-system` namespace. This secret won’t change during uninstalls or upgrades.
-  - After deployment, you can customize alert notifications through the UI.
-- **Additional Secrets (Optional)**: Add secrets for custom alert configurations.
 
 ![monitoring-edit-alerting](/img/docs/monitoring-edit-alerting.png)
 
