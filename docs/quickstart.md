@@ -26,6 +26,8 @@ sudo curl -sfL https://get-llmos.1block.ai | sh -s - --cluster-init --token myto
 
 To monitor installation logs, run `journalctl -u llmos -f`.
 
+For more advanced configurations, you can check out the [LLMOS Configurations](/docs/installation/configurations) page.
+
 After installation, you may optionally add a worker node to the cluster with the following command:
 ```shell
 curl -sfL https://get-llmos.1block.ai | LLMOS_SERVER=https://server-url:6443 LLMOS_TOKEN=mytoken sh -s -
@@ -67,6 +69,6 @@ After installing LLMOS, access the dashboard by navigating to `https://<server-i
 ## Examples
 
 To learn more about using LLMOS, explore the following resources:
-- [Chat with LLMOS Models](user_guide/llm_management/modelservice)
-- [Creating a Machine Learning Cluster](user_guide/ml_clusters)
-- [Creating a Jupyter Notebook](user_guide/llm_management/notebooks#create-a-notebook)
+- [Chat with LLMOS Models](./user_guide/modelservice.md)
+- [Creating a Machine Learning Cluster](./user_guide/ml_clusters)
+- [Creating a Jupyter Notebook](./user_guide/notebooks.md#create-a-notebook)

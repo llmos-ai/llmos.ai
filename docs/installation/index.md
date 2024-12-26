@@ -27,6 +27,8 @@ sudo curl -sfL https://get-llmos.1block.ai | sh -s - --cluster-init --token myto
 ```
 :::
 
+For more advanced configurations, you can check out the [LLMOS Configurations](/docs/installation/configurations) page.
+
 ### Join a Cluster
 
 To add more nodes to the cluster, you can assign them the **server** role to increase the number of management nodes or the **agent** role to add more worker nodes. 

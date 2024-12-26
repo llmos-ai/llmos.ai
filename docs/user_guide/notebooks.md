@@ -33,7 +33,7 @@ The workspace of the default notebook images is `/home/jovyan`
 :::
 
 ### Notebook Images
-LLMOS currently provides three types of notebook images for you to choose from, but you can easily add your own images via the `default-notebook-images` [setting](../../settings):
+LLMOS currently provides three types of notebook images for you to choose from, but you can easily add your own images via the `default-notebook-images` [setting](../settings):
 - [JupyterLab](https://github.com/jupyterlab/jupyterlab)
 - [Visual Studio Code \(code-server\)](https://github.com/coder/code-server)
 - [RStudio](https://github.com/rstudio/rstudio)
@@ -48,7 +48,7 @@ Packages installed by users after spawning the notebook server will only last th
 
 ## Notebook Monitoring
 
-The **Notebook** includes built-in metrics with [LLMOS Monitoring](../monitoring/enable-monitoring) to track its resource usage and consumption.To view the monitoring metrics:
+The **Notebook** includes built-in metrics with [LLMOS Monitoring](./monitoring/enable-monitoring) to track its resource usage and consumption.To view the monitoring metrics:
 
 - Click on the notebook name in the list to open its details page.
 - Click on the **Metrics** tab to see resource usage like CPU, memory, and Disk I/O.
@@ -78,7 +78,7 @@ The default notebook workspace is `/home/jovyan`.
 
 ### Notebook Images
 
-LLMOS offers three notebook images by default. You can also add your own images using the `default-notebook-images` [setting](../../settings):
+LLMOS offers three notebook images by default. You can also add your own images using the `default-notebook-images` [setting](../settings):
 - [JupyterLab](https://github.com/jupyterlab/jupyterlab)
 - [Visual Studio Code (code-server)](https://github.com/coder/code-server)
 - [RStudio](https://github.com/rstudio/rstudio)
@@ -92,7 +92,7 @@ Packages installed after starting the notebook server will be lost if the pod re
 
 ## Notebook Monitoring
 
-You can monitor your notebook's resource usage with [LLMOS Monitoring](../monitoring/enable-monitoring). To check the metrics:
+You can monitor your notebook's resource usage with [LLMOS Monitoring](./monitoring/enable-monitoring). To check the metrics:
 
 1. Click the notebook name in the list to open its details page.
 2. Go to the **Metrics** tab to view usage data like CPU, memory, network traffic, and disk I/O.
