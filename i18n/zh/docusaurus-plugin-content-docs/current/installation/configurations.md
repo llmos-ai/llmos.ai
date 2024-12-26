@@ -12,8 +12,53 @@ mkdir -p /etc/llmos
 cat > /etc/llmos/config.yaml << EOF
 role: cluster-init
 token: mytoken
+mirror: cn # 国内用户可选使用 mirror 地址镜像
 EOF
 ```
+## 配置参数
+
+### Cluster-init 角色参数
+| 参数                          | 描述                                                                                                                                                   | 默认值            |
+|------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|----------------|
+| `llmosOperatorVersion`       | 要安装的 LLMOS Operator 版本。如果未指定，将从最新的仓库中获取。                                                                                                             |                |
+| `chartRepo`                  | LLMOS chart 仓库，设置为 `latest`、`rc` 或 `dev`。默认设置为 `latest`。生产环境中请勿使用 `rc` 或 `dev`。                                                                      | `latest`       |
+| `kubernetesVersion`          | 要安装的 Kubernetes 版本。如果未指定，默认为稳定的 k3s 版本。                                                                                                              | `v1.31.3+k3s1` |
+| `operatorValues`             | 覆盖 LLMOS Operator Helm chart 的默认值。请参考 [values.yaml](https://github.com/llmos-ai/llmos-operator/blob/main/deploy/charts/llmos-operator/values.yaml)   |                |
+| `globalSystemImageRegistry`  | LLMOS operator 和系统附加容器镜像的默认镜像仓库。                                                                                                                     |                |
+| `mirror`                     | 为 LLMOS bootstrap 指定镜像注册表。目前仅支持 `cn` 选项。                                                                                                             |                |
+| `registries`                 | 用于 k8s 集群的 [registries.yaml](https://docs.k3s.io/installation/private-registry#registries-configuration-file) 文件的内容。                                 |                |
+| `systemDefaultImage`         | k8s 运行时容器镜像的默认镜像仓库。                                                                                                                                  |                |
+| `tlsSans`                    | 为端口 6443 生成的 TLS 证书的附加 SAN（主机名），例如 `llmos.example.com`                                                                                               |                |
+| `preInstructions`            | 在启动节点之前运行的命令。请参考 [Instructions](#instructions)                                                                                                       |                |
+| `postInstructions`           | 在启动节点之后运行的命令。请参考 [Instructions](#instructions)                                                                                                       |                |
+| `resources`                  | 在 LLMOS operator 启动后创建的自定义 Kubernetes 资源。                                                                                                           |                |
+| `runtimeInstallerImage`      | **高级设置：** 覆盖 Kubernetes 系统代理安装程序镜像。                                                                                                                  |                |
+| `llmosInstallerImage`        | **高级设置：** 覆盖 LLMOS operator 安装程序镜像。                                                                                                                  |                |
+
+### 所有角色参数
+| 参数                     | 描述                                                                             | 默认值      |
+|--------------------------|--------------------------------------------------------------------------------|-------------|
+| `role`                   | 该节点的角色。集群必须以一个节点作为 `role=cluster-init` 开始。                                     |             |
+| `server`                 | 加入 LLMOS 集群的节点的 URL。例如：`https://server-url:6443`                               |             |
+| `token`                  | 用于将节点加入集群的共享密钥。                                                                |             |
+| `nodeName`               | 设置节点名称。                                                                        |             |
+| `address`                | 集群中节点的外部 IP 地址。                                                                |             |
+| `internalAddress`        | 节点的内部 IP 地址。                                                                   |             |
+| `taints`                 | 创建时应用于节点的污点。                                                                   |             |
+| `labels`                 | 创建时应用于节点的标签。                                                                   |             |
+| `extraConfig`            | **高级:** 在引导过程中要应用的额外 [k3s 配置](https://docs.k3s.io/installation/configuration)。 |             |
+
+
+#### Instructions
+| 字段          | 描述                                                        | 数据类型 |
+|---------------|-------------------------------------------------------------|-----------|
+| `name`        | 任务名称（例如：`custom-pre-task`）                         | string    |
+| `image`       | 可选的要提取并使用的镜像                                    | string    |
+| `env`         | 环境变量（例如：`FOO=BAR`）                                 | []        |
+| `args`        | 程序参数（例如：`arg1`、`arg2`）                            | []        |
+| `command`     | 要执行的命令（例如：`/bin/dosomething`）                   | string    |
+| `saveOutput`  | 将输出保存到 `/var/lib/llmos/plan/plan-output.json`（可选） | bool      |
+
 
 ### 完整配置示例
 
@@ -23,13 +68,24 @@ EOF
 ################################################################
 
 # 要安装的 LLMOS Operator 版本
-llmosOperatorVersion: v0.1.0
+llmosOperatorVersion: v0.2.0
 
 # LLMOS Chart 仓库版本，设置为 "latest"、"rc" 或 "dev"。默认为 latest。
 chartRepo: latest
 
 # 要安装的 Kubernetes 版本。如果未指定，则默认为 LLMOS 指定的稳定的 k3s 版本。
-kubernetesVersion: v1.30.5+k3s1
+kubernetesVersion: v1.31.3+k3s1
+
+# LLMOS 系统组件镜像的默认仓库地址
+# 更多详情请参见：https://github.com/llmos-ai/llmos-operator/blob/main/deploy/charts/llmos-operator/values.yaml
+globalSystemImageRegistry: registry.example.com:5000
+
+# 用于 k8s 运行时的 `registries.yaml` 文件内容
+# 详情请参考：https://rancher.com/docs/k3s/latest/en/installation/private-registry/
+registries: {}
+
+# 用于引导 LLMOS 安装程序和 k8s 运行时的镜像仓库 mirror 配置
+mirror: cn
 
 # LLMOS Operator Helm 图表的自定义值。
 # 参见 https://github.com/llmos-ai/llmos-operator/blob/main/deploy/charts/llmos-operator/values.yaml
@@ -80,14 +136,6 @@ resources:
     data:
       key: value
 
-# 用于 k3s 的 `registries.yaml` 文件的内容。
-# 有关详细信息，请参见 https://rancher.com/docs/k3s/latest/en/installation/private-registry/
-registries: {}
-
-# LLMOS operator 容器镜像的默认注册表。
-# 更多详情： https://github.com/llmos-ai/llmos-operator/blob/main/deploy/charts/llmos-operator/values.yaml
-globalImageRegistry: someprefix.example.com:5000
-
 # 高级：覆盖 Kubernetes 系统代理安装程序镜像。
 runtimeInstallerImage: ...
 
@@ -130,45 +178,3 @@ labels:
 extraConfig: {}
 ```
 
-## 配置参数
-
-### Cluster-init 角色参数
-| 参数                     | 描述                                                                                                                                            | 默认值      |
-|--------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|-------------|
-| `llmosOperatorVersion`   | 要安装的 LLMOS Operator 版本。如果未指定，将从最新的存储库获取。                                                                                                      |             |
-| `chartRepo`              | LLMOS Chart 存储库，设置为 `latest`、`rc` 或 `dev`。默认为 latest。在生产环境中不要使用 `rc` 或 `dev`。                                                                 | `latest`    |
-| `kubernetesVersion`      | 要安装的 Kubernetes 版本。如果未指定，则默认为LLMOS当前指定的 k3s 版本。                                                                                               | `v1.30.5+k3s1` |
-| `operatorValues`         | 覆盖 LLMOS Operator Helm 图表的默认值。参见 [values.yaml](https://github.com/llmos-ai/llmos-operator/blob/main/deploy/charts/llmos-operator/values.yaml) |             |
-| `tlsSans`                | 为端口 6443 生成的 TLS 证书添加的额外 SAN（主机名）。例如：`llmos.example.com`                                                                                      |             |
-| `preInstructions`        | 在引导节点之前要运行的命令。参见 [Instructions](#instructions)                                                                                                |             |
-| `postInstructions`       | 在引导节点之后要运行的命令。参见 [Instructions](#instructions)                                                                                                |             |
-| `resources`              | 在 LLMOS operator 引导后要创建的自定义 Kubernetes 资源。                                                                                                    |             |
-| `registries`             | 用于 k3s 集群的 [registries.yaml](https://docs.k3s.io/installation/private-registry#registries-configuration-file) 文件的内容。                          |             |
-| `globalImageRegistry`    | LLMOS operator 容器镜像的默认注册表。                                                                                                                    |             |
-| `runtimeInstallerImage`  | **高级:** 覆盖 Kubernetes 系统代理安装程序镜像。                                                                                                             |             |
-| `llmosInstallerImage`    | **高级:** 覆盖 LLMOS operator 安装程序镜像。                                                                                                             |             |
-
-
-### 所有角色参数
-| 参数                     | 描述                                                                             | 默认值      |
-|--------------------------|--------------------------------------------------------------------------------|-------------|
-| `role`                   | 该节点的角色。集群必须以一个节点作为 `role=cluster-init` 开始。                                     |             |
-| `server`                 | 加入 LLMOS 集群的节点的 URL。例如：`https://server-url:6443`                               |             |
-| `token`                  | 用于将节点加入集群的共享密钥。                                                                |             |
-| `nodeName`               | 设置节点名称。                                                                        |             |
-| `address`                | 集群中节点的外部 IP 地址。                                                                |             |
-| `internalAddress`        | 节点的内部 IP 地址。                                                                   |             |
-| `taints`                 | 创建时应用于节点的污点。                                                                   |             |
-| `labels`                 | 创建时应用于节点的标签。                                                                   |             |
-| `extraConfig`            | **高级:** 在引导过程中要应用的额外 [k3s 配置](https://docs.k3s.io/installation/configuration)。 |             |
-
-
-#### Instructions
-| 字段          | 描述                                                        | 数据类型 |
-|---------------|-------------------------------------------------------------|-----------|
-| `name`        | 任务名称（例如：`custom-pre-task`）                         | string    |
-| `image`       | 可选的要提取并使用的镜像                                    | string    |
-| `env`         | 环境变量（例如：`FOO=BAR`）                                 | []        |
-| `args`        | 程序参数（例如：`arg1`、`arg2`）                            | []        |
-| `command`     | 要执行的命令（例如：`/bin/dosomething`）                   | string    |
-| `saveOutput`  | 将输出保存到 `/var/lib/llmos/plan/plan-output.json`（可选） | bool      |

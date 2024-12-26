@@ -8,7 +8,7 @@ title: 安装指南
 安装脚本提供了一种使用 shell 脚本创建 LLMOS 的便捷方法。它会自动从 [Github](https://github.com/llmos-ai/llmos/releases) 下载最新的 LLMOS 版本，并通过 systemd 服务初始化 LLMOS 集群和系统组件。
 
 :::info
-在继续之前，请确保您的节点符合[要求](./requirements)。
+在继续之前，请确保您的节点符合[配置需求](./requirements)。
 :::
 
 ### 集群初始化
@@ -20,6 +20,8 @@ title: 安装指南
 ```shell
 curl -sfL https://get-llmos.1block.ai | sh -s - --cluster-init --token mytoken
 ```
+
+有关更高级的配置参数，请查看 [LLMOS 配置](/docs/installation/configurations) 页面。
 
 ### 加入集群
 

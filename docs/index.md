@@ -26,10 +26,10 @@ Server nodes also function as worker nodes, but prioritize resources to the syst
 
 ## Key Features
 - **Easy [Installation](./quickstart):** Simple to install on both x86_64 and ARM64 architectures, delivering an out-of-the-box user experience.
+- **[Machine Learning Cluster](./user_guide/ml_clusters):** Supports distributed computing with parallel processing capabilities and access to leading AI libraries, improving the performance of machine learning workflows—especially for large-scale models and datasets.
 - **Seamless [Notebook](./user_guide/notebooks.md) Integration:** Integrates with popular notebook environments such as **Jupyter**, **VSCode**, and **RStudio**, allowing data scientists and developers to work efficiently in familiar tools without complex setup.
 - **[ModelService](./user_guide/modelservice.md) for LLM Serving:** Easily serve LLMs using ModelService with **OpenAI-compatible APIs**.
-- **[Machine Learning Cluster](./user_guide/ml_clusters):** Supports distributed computing with parallel processing capabilities and access to leading AI libraries, improving the performance of machine learning workflows—especially for large-scale models and datasets.
-- **Built-in [Monitoring & Alerts](./user_guide/monitoring/enable-monitoring):** Makes it easy to track cluster and GPU metrics with ready-to-use Grafana dashboards, Prometheus rules, and more, using the Prometheus Operator.
+- **[Monitoring & Alerts](./user_guide/monitoring/enable-monitoring):** Makes it easy to track cluster and GPU metrics with ready-to-use Grafana dashboards, Prometheus rules, alerts, and more, using the Prometheus Operator.
 - **Built-in [Distributed Storage](./user_guide/storage/system-storage):** Provides built-in distributed storage with high-performance, fault-tolerant features. Offers robust, scalable block and filesystem storage tailored to the demands of AI and LLM applications.
 - **[User](./user_and_auth/user) & [RBAC Management](./user_and_auth/role-template):** Simplifies user management with role-based access control (RBAC) and role templates, ensuring secure and efficient resource allocation.
 - **Optimized for Edge & Branch Deployments:** Supports private deployments with optimized resource usage for running models and workloads in edge and branch networks. It also allows for horizontal scaling to accommodate future business needs.
