@@ -68,17 +68,18 @@ export NO_PROXY=127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
 ### Bootstrap Environment Variables
 Environment variables prefixed with `LLMOS_` are preserved for the systemd service. 
 
-| Flag              | Environment Variable  | Default                  | Description                                                                                                             |
-|-------------------|-----------------------|--------------------------|-------------------------------------------------------------------------------------------------------------------------|
-| --cluster-init    | LLMOS_CLUSTER_INIT    | `false`                  | Run bootstrap as cluster-init node.                                                                                     |
-| --server          | LLMOS_SERVER          |                          | The URL of the server to join. e.g., `https://server-url:6443`                                                          |
-| --token           | LLMOS_TOKEN           |                          | The token to use for join the cluster.                                                                                  |
-| --role            | LLMOS_ROLE            |                          | The node role to join the cluster. Default to `agent` role when server URL and token is provided but the role is empty. |
-| --force           | LLMOS_BOOTSTRAP_FORCE | `false`                  | Force run bootstrap even if already bootstrapped.                                                                       |
-| --config          | LLMOS_CONFIG_FILE     | `/etc/llmos/config.yaml` | Path to the LLMOS configuration file.                                                                                   |
-| --data-dir        | LLMOS_DATA_DIR        | `/var/lib/llmos`         | Path to the LLMOS data directory.                                                                                       |
-| --debug           | LLMOS_DEBUG           | `false`                  | Enable debug logging.                                                                                                   |
-| --debug-level     | LLMOS_DEBUG_LEVEL     | `7`                      | Debug log level (valid 0-9).                                                                                            |
+| Flag           | Environment Variable  | Default                  | Description                                                                                                             |
+|----------------|-----------------------|--------------------------|-------------------------------------------------------------------------------------------------------------------------|
+| --cluster-init | LLMOS_CLUSTER_INIT    | `false`                  | Run bootstrap as cluster-init node.                                                                                     |
+| --server       | LLMOS_SERVER          |                          | The URL of the server to join. e.g., `https://server-url:6443`                                                          |
+| --token        | LLMOS_TOKEN           |                          | The token to use for join the cluster.                                                                                  |
+| --role         | LLMOS_ROLE            |                          | The node role to join the cluster. Default to `agent` role when server URL and token is provided but the role is empty. |
+| --mirror       | LLMOS_MIRROR          |                          | The mirror registry for LLMOS installation. Currently only `cn` option is supported.                                    |
+| --force        | LLMOS_BOOTSTRAP_FORCE | `false`                  | Force run bootstrap even if already bootstrapped.                                                                       |
+| --config       | LLMOS_CONFIG_FILE     | `/etc/llmos/config.yaml` | Path to the LLMOS configuration file.                                                                                   |
+| --data-dir     | LLMOS_DATA_DIR        | `/var/lib/llmos`         | Path to the LLMOS data directory.                                                                                       |
+| --debug        | LLMOS_DEBUG           | `false`                  | Enable debug logging.                                                                                                   |
+| --debug-level  | LLMOS_DEBUG_LEVEL     | `7`                      | Debug log level (valid 0-9).                                                                                            |
 
 To pass environment variables to the installation script, add the `LLMOS_` prefix environment variables just like below:
 

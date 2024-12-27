@@ -20,7 +20,7 @@ You can create one or more model services from the **LLMOS Management > Model Se
     - For local path models, specify the volume path (e.g., `/root/.cache/huggingface/hub/models--Qwen--Qwen2.5-0.5B-Instruct`).
 3. **Engine Arguments (Optional)**: Add arguments like `--dtype=half --max-model-len=4096` in the **Arguments** field if needed. [More details](https://docs.vllm.ai/en/latest/usage/engine_args.html).
 4. **Hugging Face Configurations (Optional)**:
-    - Use a [secret credential](#adding-a-huggingface-token) for models that need authentication.
+    - Use a [secret credential](#adding-a-hugging-face-token) for models that need authentication.
     - Add a custom **Hugging Face Mirror URL** if using a proxy (e.g., `https://hf-mirror.com/`).
 5. **Environment Variables (Optional)**: Add any extra environment variables as needed. [More details](https://docs.vllm.ai/en/latest/usage/env_vars.html).
 

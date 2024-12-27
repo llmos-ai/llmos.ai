@@ -198,7 +198,7 @@ match_re:
 
 ## 告警测试验证
 
-启用上述 [Alertmanager 配置](#验证告警)后，您可以创建一个 `PrometheusRule` 对象来验证配置是否正确。
+启用上述 [Alertmanager 配置](#告警测试验证)后，您可以创建一个 `PrometheusRule` 对象来验证配置是否正确。
 
 确保对象的标签与 Prometheus 对象的 `spec.ruleSelector` 匹配（**LLMOS Monitoring** 使用标签 `release: llmos-monitoring`）。
 

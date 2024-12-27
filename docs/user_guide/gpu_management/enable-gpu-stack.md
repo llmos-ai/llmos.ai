@@ -16,7 +16,7 @@ The LLMOS GPU Stack is always enabled because it is a core part of the platform.
 :::info
 
 Currently supported GPUs:
-- :white_check_mark: Nvidia CUDA
+:white_check_mark: Nvidia CUDA
 
 Planned future support:
 - [ ] AMD ROCm

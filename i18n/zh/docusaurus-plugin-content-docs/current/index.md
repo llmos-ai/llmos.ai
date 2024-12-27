@@ -24,12 +24,13 @@ LLMOS 是一款开源的云原生基础设施软件，专为加速 AI 应用开�
 :::
 
 ## 主要特性
-- **简单的[安装](./quickstart)**：支持在 x86_64 和 ARM64 架构上简单安装，提供即开即用的用户体验。
+- **[简单的安装](./quickstart)**：支持 x86_64 和 ARM64 架构、简单安装，提供即开即用的用户体验。
+- **[GPU Stack 管理](./user_guide/gpu_management/enable-gpu-stack):** 提供虚拟 GPU (vGPU) 和多加速器支持，以提升 GPU 资源利用率和操作灵活性。
 - **[机器学习集群](./user_guide/ml_clusters)**：支持分布式计算，具有并行处理能力，并包含领先的 AI 库，提升机器学习工作流的性能，尤其适用于大规模模型调优和数据集处理等任务。
-- **无缝的[Notebook](./user_guide/notebooks.md)集成**：集成了流行的Notebook环境，如 **Jupyter**、**VSCode** 和 **RStudio**，让数据科学家和开发者无需复杂配置即可在熟悉的工具中高效工作。
-- **用于 LLM 服务的 [ModelService](./user_guide/modelservice.md)**：通过与 **OpenAI 兼容的 API**，使用 ModelService 轻松部署私有化的LLM。
+- **[无缝的 Notebook 集成](./user_guide/notebooks.md)**：集成了流行的Notebook环境，如 **Jupyter**、**VSCode** 和 **RStudio**，让数据科学家和开发者无需复杂配置即可在熟悉的工具中高效工作。
+- **[ModelService](./user_guide/modelservice.md) 用于 LLM 服务：** 提供 **OpenAI 兼容 API**，轻松从 [HuggingFace](https://huggingface.co/models)、[ModelScope](https://modelscope.cn/models) 或本地路径部署 LLM 服务。
 - **[监控与告警](./user_guide/monitoring/enable-monitoring)：** 内置集成 Prometheus Operator，轻松了解集群和 GPU 指标，提供可视化的 Grafana 仪表板、Prometheus 规则、告警信息等。
-- **内置的[分布式存储](./user_guide/storage/system-storage)**：提供高性能、高冗余的内置分布式存储，适用于 AI 和 LLM 应用的需求，具备强大的可扩展块存储和文件系统存储。
+- **[存储管理](./user_guide/storage/system-storage)**：提供高性能、高冗余的内置分布式存储，适用于 AI 和 LLM 应用的需求，具备强大的可扩展块存储和文件系统存储。
 - **[用户](./user_and_auth/user)和[RBAC 管理](./user_and_auth/role-template)**：通过基于角色的访问控制（RBAC）和角色模板简化用户管理，确保资源分配的安全与效率。
 - **针对边缘和分支部署进行了优化**：支持私有部署，优化了资源使用，使模型和工作负载能够在边缘和分支网络中运行，并支持横向扩展以满足未来的业务需求。
 
