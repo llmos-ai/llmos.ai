@@ -61,17 +61,18 @@ export NO_PROXY=127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
 ### 引导环境变量
 以 `LLMOS_` 为前缀的环境变量会为 systemd 服务保留。
 
-| 标志              | 环境变量              | 默认值                    | 描述                                                       |
-|-------------------|-----------------------|--------------------------|----------------------------------------------------------|
-| --cluster-init     | LLMOS_CLUSTER_INIT    | `false`                  | 将作为集群初始化节点运行。                                            |
-| --server           | LLMOS_SERVER          |                          | 要加入的服务器的 URL，例如 `https://server-url:6443`                |
-| --token            | LLMOS_TOKEN           |                          | 用于加入集群的 token。                                           |
-| --role             | LLMOS_ROLE            |                          | 用于加入集群的节点角色。当提供服务器 URL 和 token 时，如果角色为空，默认为 `worker` 角色。 |
-| --force            | LLMOS_BOOTSTRAP_FORCE | `false`                  | 即使已经引导，仍强制运行引导过程。                                        |
-| --config           | LLMOS_CONFIG_FILE     | `/etc/llmos/config.yaml` | LLMOS 配置文件的路径。                                           |
-| --data-dir         | LLMOS_DATA_DIR        | `/var/lib/llmos`         | LLMOS 数据目录的路径。                                           |
-| --debug            | LLMOS_DEBUG           | `false`                  | 启用调试日志记录。                                                |
-| --debug-level      | LLMOS_DEBUG_LEVEL     | `7`                      | 调试日志级别 (有效范围 0-9)。                                       |
+| 标志               | 环境变量              | 默认值                    | 描述                                                       |
+|------------------|-----------------------|--------------------------|----------------------------------------------------------|
+| --cluster-init   | LLMOS_CLUSTER_INIT    | `false`                  | 将作为集群初始化节点运行。                                            |
+| --server         | LLMOS_SERVER          |                          | 要加入的服务器的 URL，例如 `https://server-url:6443`                |
+| --token          | LLMOS_TOKEN           |                          | 用于加入集群的 token。                                           |
+| --role           | LLMOS_ROLE            |                          | 用于加入集群的节点角色。当提供服务器 URL 和 token 时，如果角色为空，默认为 `worker` 角色。 |
+| --mirror         | LLMOS_MIRROR          |                          | 用于指定 LLMOS 安装的镜像代理。目前仅支持 `cn` 选项。                        |
+| --force          | LLMOS_BOOTSTRAP_FORCE | `false`                  | 即使已经引导，仍强制运行引导过程。                                        |
+| --config         | LLMOS_CONFIG_FILE     | `/etc/llmos/config.yaml` | LLMOS 配置文件的路径。                                           |
+| --data-dir       | LLMOS_DATA_DIR        | `/var/lib/llmos`         | LLMOS 数据目录的路径。                                           |
+| --debug          | LLMOS_DEBUG           | `false`                  | 启用调试日志记录。                                                |
+| --debug-level    | LLMOS_DEBUG_LEVEL     | `7`                      | 调试日志级别 (有效范围 0-9)。                                       |
 
 要将环境变量传递给安装脚本，添加以 `LLMOS_` 为前缀的环境变量，如下所示：
 

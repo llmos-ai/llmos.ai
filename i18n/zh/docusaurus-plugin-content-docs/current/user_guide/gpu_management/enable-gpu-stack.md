@@ -16,7 +16,7 @@ LLMOS GPU Stack 将始终启用，因为它是平台的核心组件。
 :::info
 
 当前支持的 GPU：
-- :white_check_mark: Nvidia CUDA
+:white_check_mark: Nvidia CUDA
 
 未来计划支持：
 - [ ] AMD ROCm
@@ -70,4 +70,4 @@ LLMOS GPU Stack 将始终启用，因为它是平台的核心组件。
   ![nodes](/img/docs/nodes.png)
 - **概览页面**：启用 [LLMOS 监控](../monitoring/enable-monitoring) 后，GPU 指标将显示在概览页面上。
   ![overview-gpu-metrics](/img/docs/overview-gpu-metrics.png)
-- **GPU 设备**：在 [GPU 设备](gpu-devices.md#gpu-device-details) 页面中将显示所有 GPU 设备的状态和详细信息。
+- **GPU 设备**：在 [GPU 设备](gpu-devices.md#gpu-设备详细信息)页面中将显示所有 GPU 设备的状态和详细信息。
