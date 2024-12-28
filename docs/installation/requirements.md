@@ -68,12 +68,12 @@ It’s recommended to turn off `firewalld`. If you keep it enabled, you may need
 
 The hardware needs will vary depending on your deployment size. Below are the minimum recommendations:
 
-| Spec             | Minimum Requirement                                                                                           | Recommended Spec                    |
-|------------------|---------------------------------------------------------------------------------------------------------------|-------------------------------------|
-| CPU              | 4 cores                                                                                                       | 8 cores                             |
-| Memory           | 16 GB                                                                                                         | 32 GB                               |
-| Root Disk Space  | 100  GB                                                                                                       | 200 GB                              |
-| Disk Performance | [5,000+ random IOPS](https://prog.world/is-storage-speed-suitable-for-etcd-ask-fio/) for root disk (SSD/NVMe) | Same as minimum requirements        |
+| Spec             | Minimum Requirement                                                                                           | Recommended Spec             |
+|------------------|---------------------------------------------------------------------------------------------------------------|------------------------------|
+| CPU              | 8 cores                                                                                                       | 16 cores                     |
+| Memory           | 16 GB                                                                                                         | 32 GB                        |
+| Root Disk Space  | 100  GB                                                                                                       | 200 GB                       |
+| Disk Performance | [5,000+ random IOPS](https://prog.world/is-storage-speed-suitable-for-etcd-ask-fio/) for root disk (SSD/NVMe) | Same as minimum requirements |
 
 ### Disk Type
 
