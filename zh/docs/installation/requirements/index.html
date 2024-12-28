@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-PTL7Y3S3YY"></script>
 <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-PTL7Y3S3YY",{})</script><link rel="stylesheet" href="/zh/assets/css/styles.aaaf2b22.css">
-<script src="/zh/assets/js/runtime~main.82e17bf3.js" defer="defer"></script>
+<script src="/zh/assets/js/runtime~main.052ebd70.js" defer="defer"></script>
 <script src="/zh/assets/js/main.e58676b6.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -36,9 +36,9 @@
 <table><thead><tr><th>发行版</th><th>版本</th></tr></thead><tbody><tr><td>Ubuntu</td><td>20.04 LTS 或更新</td></tr><tr><td>RHEL</td><td>8.5 或更新</td></tr><tr><td>SLES/OpenSUSE</td><td>15.3 (Leap) 或更新</td></tr><tr><td>Rocky Linux</td><td>8.5 或更新</td></tr><tr><td>Debian</td><td>11.0 或更新</td></tr><tr><td>Fedora</td><td>37 或更新</td></tr></tbody></table>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="硬件要求">硬件要求<a href="#硬件要求" class="hash-link" aria-label="硬件要求的直接链接" title="硬件要求的直接链接">​</a></h2>
 <p>硬件需求将根据您的部署规模而有所不同。以下是最低建议：</p>
-<table><thead><tr><th>规格</th><th>最低要求</th><th>推荐规格</th></tr></thead><tbody><tr><td>CPU</td><td>4 核</td><td>8 核</td></tr><tr><td>内存</td><td>16 GB</td><td>32 GB</td></tr><tr><td>系统磁盘空间</td><td>100 GB</td><td>200 GB</td></tr><tr><td>磁盘性能</td><td>对于系统磁盘 (推荐SSD/NVMe)，要求 <a href="https://prog.world/is-storage-speed-suitable-for-etcd-ask-fio/" target="_blank" rel="noopener noreferrer">5000+ 随机 IOPS</a></td><td>与最低要求相同</td></tr></tbody></table>
+<table><thead><tr><th>规格</th><th>最低要求</th><th>推荐规格</th></tr></thead><tbody><tr><td>CPU</td><td>8 核</td><td>16 核</td></tr><tr><td>内存</td><td>16 GB</td><td>32 GB</td></tr><tr><td>系统磁盘空间</td><td>100 GB</td><td>200 GB</td></tr><tr><td>磁盘性能</td><td>对于系统磁盘 (推荐SSD/NVMe)，要求 <a href="https://prog.world/is-storage-speed-suitable-for-etcd-ask-fio/" target="_blank" rel="noopener noreferrer">5000+ 随机 IOPS</a></td><td>与最低要求相同</td></tr></tbody></table>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="磁盘类型">磁盘类型<a href="#磁盘类型" class="hash-link" aria-label="磁盘类型的直接链接" title="磁盘类型的直接链接">​</a></h3>
-<p>为了获得更好的性能，请使用 SSD/NVMe 作为 LLMOS 集群的存储介质。如果您使用的是云服务提供商，请选择合适的磁盘大小，并选用最大 IOPS 的磁盘类型。</p>
+<p>为了获得更好的性能，请使用 SSD/NVMe 作为 LLMOS 集群的存储介质。如果您  使用的是云服务提供商，请选择合适的磁盘大小，并选用最大 IOPS 的磁盘类型。</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="网络">网络<a href="#网络" class="hash-link" aria-label="网络的直接链接" title="网络的直接链接">​</a></h2>
 <p>LLMOS 节点需要访问所有节点的 6443 和 8443 端口。</p>
 <p>LLMOS 使用反向隧道，这意味着节点与服务器建立出站连接，所有节点间的流量通过该隧道运行。</p>
