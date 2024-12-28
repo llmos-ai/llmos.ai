@@ -8,7 +8,7 @@ title: 快速入门
 本指南将帮助您使用默认的引导选项快速启动 LLMOS 集群。[安装指南](./installation)包含有关引导配置选项的更多详细信息。
 
 :::info
-在继续之前，请确保您的节点符合[要求](./installation/requirements.md)。
+在继续之前，请确保您的节点符合[配置需求](./installation/requirements.md)。
 :::
 
 ## 安装脚本
