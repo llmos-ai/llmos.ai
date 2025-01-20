@@ -18,7 +18,7 @@ function HomepageHeader() {
             </Heading>
             <p className="hero__subtitle landing-subtitle">
               <Translate id="home-title">
-                An Open Source, Cloud-native Infrastructure Software designed to simplify the management of AI applications and Large Language Models (LLMs).
+                Open-source AI infrastructure management software designed to accelerate AI application development and simplify the management of large language models (LLMs).
               </Translate>
             </p>
             <div className={styles.buttons}>

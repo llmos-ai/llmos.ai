@@ -4,8 +4,10 @@ title: 概览
 ---
 
 # LLMOS 概述
-LLMOS 是一款开源的云原生基础设施软件，专为加速 AI 应用开发并简化大型语言模型（LLM）的管理而设计。 它支持部署在公有云或私有的 AI 工作站和 GPU 服务器上。
-通过LLMOS，组织可以轻松部署、扩展并运行机器学习工作流，同时减少与AI开发和运维相关的复杂性。
+LLMOS 是一款开源的 AI 基础设施管理软件，专为加速 AI 应用开发并简化大型语言模型（LLM）的管理而设计。 它支持部署在公有云或私有的 AI 工作站和 GPU 服务器上。
+通过LLMOS，您可以轻松部署、扩展并运行机器学习工作流，同时减少与AI开发和运维相关的复杂性。
+
+<iframe width="99%" height="540" src="//player.bilibili.com/player.html?isOutside=true&aid=113860992309374&bvid=BV13CwWeUEvV&cid=25746675759&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
 
 ## LLMOS 架构
 下图展示了 LLMOS 的高级架构：
