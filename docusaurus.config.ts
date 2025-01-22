@@ -62,6 +62,13 @@ const config: Config = {
   themeConfig: {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
+    announcementBar: {
+      id: 'star_repo',
+      content: 'If you like LLMOS, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/llmos-ai/llmos">GitHub</a>! ⭐️️',
+      backgroundColor: '#fafbfc',
+      textColor: '#091E42',
+      isCloseable: false,
+    },
     navbar: {
       title: 'LLMOS',
       logo: {
