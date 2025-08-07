@@ -29,6 +29,24 @@ sudo curl -sfL https://get-llmos.1block.ai | sh -s - --cluster-init --token myto
 
 For more advanced configurations, you can check out the [LLMOS Configurations](/docs/installation/configurations) page.
 
+#### Config Proxy
+If your environment requires internet access through a proxy, set the `HTTP_PROXY` and `HTTPS_PROXY` environment variables before running the installation script:
+
+```shell
+export HTTP_PROXY=http://proxy.example.com:8080
+export HTTPS_PROXY=http://proxy.example.com:8080
+export NO_PROXY=127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16 # Replace the CIDRs with your own
+```
+
+If you want to configure the proxy settings for `containerd` without affecting the node and LLMOS, you can prefix the variables with `CONTAINERD_`:
+
+```shell
+export CONTAINERD_HTTP_PROXY=http://proxy.example.com:8080
+export CONTAINERD_HTTPS_PROXY=http://proxy.example.com:8080
+export CONTAINERD_NO_PROXY=127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16 # Replace the CIDRs with your own
+```
+
+
 ### Join a Cluster
 
 To add more nodes to the cluster, you can assign them the **server** role to increase the number of management nodes or the **agent** role to add more worker nodes. 
@@ -54,16 +72,6 @@ LLMOS will bootstrap a node with one of the following roles:
 - **cluster-init:** The first node in every cluster must have this role.
 - **server:** Joins the cluster with a management role, functioning as a control-plane, etcd, and worker node.
 - **agent:**  Joins the cluster as a worker-only node.
-
-
-### Config Proxy
-If you environment needs to access the internet through a proxy, you can set the `HTTP_PROXY` and `HTTPS_PROXY` environment variables to configure the installation script to use the proxy.
-
-```shell
-export HTTP_PROXY=http://proxy.example.com:8080
-export HTTPS_PROXY=http://proxy.example.com:8080
-export NO_PROXY=127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
-```
 
 ### Bootstrap Environment Variables
 Environment variables prefixed with `LLMOS_` are preserved for the systemd service. 

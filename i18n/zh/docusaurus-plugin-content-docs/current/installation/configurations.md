@@ -12,6 +12,7 @@ mkdir -p /etc/llmos
 cat > /etc/llmos/config.yaml << EOF
 role: cluster-init
 token: mytoken
+#address: 123.123.123.123 # 指定节点的外部IP地址
 mirror: cn # 国内用户可选使用 mirror 地址镜像
 EOF
 ```
@@ -22,7 +23,7 @@ EOF
 |------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|----------------|
 | `llmosOperatorVersion`       | 要安装的 LLMOS Operator 版本。如果未指定，将从最新的仓库中获取。                                                                                                             |                |
 | `chartRepo`                  | LLMOS chart 仓库，设置为 `latest`、`rc` 或 `dev`。默认设置为 `latest`。生产环境中请勿使用 `rc` 或 `dev`。                                                                      | `latest`       |
-| `kubernetesVersion`          | 要安装的 Kubernetes 版本。如果未指定，默认为稳定的 k3s 版本。                                                                                                              | `v1.31.3+k3s1` |
+| `kubernetesVersion`          | 要安装的 Kubernetes 版本。如果未指定，默认为稳定的 k3s 版本。                                                                                                              | `v1.33.1+k3s1` |
 | `operatorValues`             | 覆盖 LLMOS Operator Helm chart 的默认值。请参考 [values.yaml](https://github.com/llmos-ai/llmos-operator/blob/main/deploy/charts/llmos-operator/values.yaml)   |                |
 | `globalSystemImageRegistry`  | LLMOS operator 和系统附加容器镜像的默认镜像仓库。                                                                                                                     |                |
 | `mirror`                     | 为 LLMOS bootstrap 指定镜像注册表。目前仅支持 `cn` 选项。                                                                                                             |                |
@@ -68,13 +69,13 @@ EOF
 ################################################################
 
 # 要安装的 LLMOS Operator 版本
-llmosOperatorVersion: v0.2.0
+llmosOperatorVersion: v0.3.0
 
 # LLMOS Chart 仓库版本，设置为 "latest"、"rc" 或 "dev"。默认为 latest。
 chartRepo: latest
 
 # 要安装的 Kubernetes 版本。如果未指定，则默认为 LLMOS 指定的稳定的 k3s 版本。
-kubernetesVersion: v1.31.3+k3s1
+kubernetesVersion: v1.33.1+k3s1
 
 # LLMOS 系统组件镜像的默认仓库地址
 # 更多详情请参见：https://github.com/llmos-ai/llmos-operator/blob/main/deploy/charts/llmos-operator/values.yaml

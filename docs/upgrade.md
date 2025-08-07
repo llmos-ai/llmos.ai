@@ -11,6 +11,20 @@ Admin users can view all available versions and manually upgrade to new versions
 Downgrading LLMOS is not supported.
 :::
 
+
+## Upgrade Guide
+
+### Upgrading from v0.2.0 to v0.3.0
+To Upgrade LLMOS cluster from `v0.2.0` to `v0.3.0`, you can simply run the following command:
+```
+curl -sfL https://get-llmos.1block.ai/v0.3.0-upgrade.sh | sh -s -
+```
+
+And then, you can check the upgrade status by running the following command and wait for the upgrade state to become `Complete`:
+```
+kubectl get Upgrade.management.llmos.ai upgrade-v030-v1 -oyaml -w
+```
+
 ## Upgrade via Command Line
 1. Login to one of the management nodes, or have the `KUBECONFIG` environment variable set to point to correct LLMOS cluster.
     ```shell
@@ -22,10 +36,11 @@ Downgrading LLMOS is not supported.
     apiVersion: management.llmos.ai/v1
     kind: Upgrade
     metadata:
-      name: upgrade-v011-rc1
+      name: upgrade-v030-v1
     spec:
-      version: v0.1.1-rc1 # The version to upgrade to
-      registry: "docker.io/llmosai" # Override the default registry if needed(e.g., private registry)
+      version: v0.3.0 # The version to upgrade to
+      kubernetesVersion: v1.33.1+k3s1
+      registry: "ghcr.io/llmos-ai" # Override the default registry if needed(e.g., private registry)
     EOF
     ```
 3. Wait for the upgrade to complete. A successful upgrade YAML will look like the following(with `status.state` to `Complete`):
@@ -126,12 +141,12 @@ kubectl apply -f - <<EOF
 apiVersion: management.llmos.ai/v1
 kind: Version
 metadata:
-   name: v0.1.1-rc1
+   name: v0.3.0
 spec:
-   minUpgradableVersion: v0.1.0 # The minimum version that can be upgraded to this version
-   kubernetesVersion: v1.31.0+k3s1 # The newer k8s version that is included in the new version
-   releaseDate: "2024-09-30"
-   tags: ["preview"]
+   minUpgradableVersion: v0.2.0 # The minimum version that can be upgraded to this version
+   kubernetesVersion: v1.33.1+k3s1 # The newer k8s version that is included in the new version
+   releaseDate: "2025-08-07"
+   tags: ["stable"]
 EOF
 ```
 

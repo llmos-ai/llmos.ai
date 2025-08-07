@@ -8,7 +8,7 @@ Whether you're setting up LLMOS on a virtual machine or bare-metal server, each 
 ## Prerequisites
 
 - If the node has NVIDIA GPUs, install the [NVIDIA driver](https://docs.nvidia.com/datacenter/tesla/driver-installation-guide/index.html) first.
-    - Ensure the CUDA [Compute Capability](https://developer.nvidia.com/cuda-gpus) is 7.5 or higher.
+    - Ensure the CUDA driver's major version is `575` or higher.
 - No two nodes should have the same hostname.
 - The node must not have any existing Kubernetes clusters running on it.
 
@@ -19,25 +19,26 @@ nvidia-smi
 ```
 The output should look something like this:
 ```
-+---------------------------------------------------------------------------------------+
-| NVIDIA-SMI 535.183.06             Driver Version: 535.183.06   CUDA Version: 12.2     |
-|-----------------------------------------+----------------------+----------------------+
-| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
-| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
-|                                         |                      |               MIG M. |
-|=========================================+======================+======================|
-|   0  NVIDIA GeForce RTX 4090        Off | 00000000:01:00.0 Off |                  Off |
-| 30%   41C    P0              54W / 450W |      0MiB / 24564MiB |      0%      Default |
-|                                         |                      |                  N/A |
-+-----------------------------------------+----------------------+----------------------+
-
-+---------------------------------------------------------------------------------------+
-| Processes:                                                                            |
-|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
-|        ID   ID                                                             Usage      |
-|=======================================================================================|
-|  No running processes found                                                           |
-+---------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 575.64.03              Driver Version: 575.64.03      CUDA Version: 12.9     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 4090        Off |   00000000:01:00.0 Off |                  Off |
+|  0%   48C    P8             14W /  450W |   16801MiB /  24564MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A          746020      C   /usr/bin/python3                       8434MiB |
+|    0   N/A  N/A          819263      C   /usr/bin/python3                       8352MiB |
++-----------------------------------------------------------------------------------------+
 ```
 :::
 ## Supported Architectures
