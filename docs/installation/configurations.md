@@ -12,6 +12,7 @@ mkdir -p /etc/llmos
 cat > /etc/llmos/config.yaml << EOF
 role: cluster-init
 token: mytoken
+#address: 123.123.123.123 # Specify the external IP address for the node
 #mirror: cn # enable mirror to accelerate download speed for CN users
 EOF
 ```
@@ -23,7 +24,7 @@ EOF
 |-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------|
 | `llmosOperatorVersion`      | LLMOS Operator version to be installed. Fetched from the latest repo if not specified.                                                                                           |                |
 | `chartRepo`                 | LLMOS chart repository, set to `latest`, `rc`, or `dev`. Defaults to latest. Do not use `rc` or `dev` in production.                                                             | `latest`       |
-| `kubernetesVersion`         | Kubernetes version to be installed. Defaults to a stable k3s version if not specified.                                                                                           | `v1.31.3+k3s1` |
+| `kubernetesVersion`         | Kubernetes version to be installed. Defaults to a stable k3s version if not specified.                                                                                           | `v1.33.1+k3s1` |
 | `operatorValues`            | Overwrite default values of the LLMOS Operator Helm chart. Refer to [values.yaml](https://github.com/llmos-ai/llmos-operator/blob/main/deploy/charts/llmos-operator/values.yaml) |                |
 | `globalSystemImageRegistry` | Default registry for LLMOS operator & system addon container images.                                                                                                             |                |
 | `mirror`                    | Specify the mirror registry for LLMOS bootstrap. Currently only `cn` option is supported.                                                                                        |                |
@@ -68,13 +69,13 @@ EOF
 ################################################################
 
 # LLMOS Operator version to be installed
-llmosOperatorVersion: v0.2.0
+llmosOperatorVersion: v0.3.0
 
 # LLMOS chart repository, set to "latest", "rc" or "dev". Defaults to latest.
 chartRepo: latest
 
 # Kubernetes version to be installed. Defaults to a stable k3s version if not specified.
-kubernetesVersion: v1.31.3+k3s1
+kubernetesVersion: v1.33.1+k3s1
 
 # Default registry for LLMOS system component images.
 # More details: https://github.com/llmos-ai/llmos-operator/blob/main/deploy/charts/llmos-operator/values.yaml

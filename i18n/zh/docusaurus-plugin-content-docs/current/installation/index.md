@@ -23,6 +23,23 @@ curl -sfL https://get-llmos.1block.ai | sh -s - --cluster-init --token mytoken
 
 有关更高级的配置参数，请查看 [LLMOS 配置](/docs/installation/configurations) 页面。
 
+#### 配置代理
+如果您的环境需要通过代理访问互联网，请在运行安装脚本之前设置 `HTTP_PROXY` 和 `HTTPS_PROXY` 环境变量：
+
+```shell
+export HTTP_PROXY=http://proxy.example.com:8080
+export HTTPS_PROXY=http://proxy.example.com:8080
+export NO_PROXY=127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16 # 将 CIDR 替换为您自己的
+```
+
+如果您只想为 `containerd` 配置代理而不影响节点和 LLMOS，您可以在变量前加上 `CONTAINERD_` 前缀：
+
+```shell
+export CONTAINERD_HTTP_PROXY=http://proxy.example.com:8080
+export CONTAINERD_HTTPS_PROXY=http://proxy.example.com:8080
+export CONTAINERD_NO_PROXY=127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16 # 将 CIDR 替换为您自己的
+```
+
 ### 加入集群
 
 要向集群添加更多节点，您可以为它们分配 **server** 角色以增加管理节点，或者分配 **agent** 角色以添加更多的工作节点。
@@ -49,14 +66,6 @@ LLMOS 将使用以下角色之一引导节点：
 - **server:** 以管理角色加入集群，充当控制平面、etcd 和工作节点。
 - **worker:** 以仅工作节点的角色加入集群。
 
-### 配置代理
-如果您的环境需要通过代理访问互联网，您可以设置 `HTTP_PROXY` 和 `HTTPS_PROXY` 环境变量以配置安装脚本使用代理。
-
-```shell
-export HTTP_PROXY=http://proxy.example.com:8080
-export HTTPS_PROXY=http://proxy.example.com:8080
-export NO_PROXY=127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
-```
 
 ### 引导环境变量
 以 `LLMOS_` 为前缀的环境变量会为 systemd 服务保留。

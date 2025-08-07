@@ -11,6 +11,24 @@ LLMOS 包含一个内置的升级检查机制，每 60 分钟自动检查新版�
 LLMOS不支持降级。
 :::
 
+
+## 升级指南
+
+### 从 v0.2.0 升级到 v0.3.0
+
+要将 LLMOS 集群从 `v0.2.0` 升级到 `v0.3.0`，你只需运行以下命令：
+
+```
+curl -sfL https://get-llmos.1block.ai/v0.3.0-upgrade.sh | sh -s -
+```
+
+然后，你可以运行以下命令来检查升级状态，并等待升级状态变为 `Complete`：
+
+```
+kubectl get Upgrade.management.llmos.ai upgrade-v030-v1 -oyaml -w
+```
+
+
 ## 通过命令行升级
 1. 登录到其中一个管理节点，或设置 `KUBECONFIG` 环境变量指向正确的 LLMOS 集群。
     ```shell
@@ -22,10 +40,11 @@ LLMOS不支持降级。
     apiVersion: management.llmos.ai/v1
     kind: Upgrade
     metadata:
-      name: upgrade-v011-rc1
+      name: upgrade-v030-v1
     spec:
-      version: v0.1.1-rc1 # 要升级到的版本
-      registry: "docker.io/llmosai" # 如有需要，覆盖默认注册表（例如，私有注册表）
+      version: v0.3.0 # 要升级到的版本
+      kubernetesVersion: v1.33.1+k3s1
+      registry: "ghcr.io/llmos-ai" # 如有需要，覆盖默认注册表（例如，私有注册表）
     EOF
     ```
 3. 等待升级完成。成功的升级 YAML 看起来如下（`status.state` 为 `Complete`）：
@@ -126,12 +145,12 @@ kubectl apply -f - <<EOF
 apiVersion: management.llmos.ai/v1
 kind: Version
 metadata:
-   name: v0.1.1-rc1
+   name: v0.3.0
 spec:
-   minUpgradableVersion: v0.1.0 # 可升级到此版本的最低版本
-   kubernetesVersion: v1.31.0+k3s1 # 新版本中包含的更新的 k8s 版本
-   releaseDate: "2024-09-30"
-   tags: ["preview"]
+   minUpgradableVersion: v0.2.0 # 可升级到此版本的最低版本
+   kubernetesVersion: v1.33.1+k3s1 # 新版本中包含的更新的 k8s 版本
+   releaseDate: "2025-08-15"
+   tags: ["stable"]
 EOF
 ```
 
