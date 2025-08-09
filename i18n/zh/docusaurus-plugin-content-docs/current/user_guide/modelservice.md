@@ -11,14 +11,16 @@ LLMOS 平台通过 `ModelService` 简化了大语言模型(LLM)的部署, 为用
 
 您可以通过 **LLMOS 管理 > 模型服务** 页面创建一个或多个模型服务。
 
-### 通用配置
+### 选择模型
+从 huggingface、modelscope 或本地选择一个模型。如果您选择本地模型，它将显示[本地模型](model_management/models.md#本地模型)。
+
+![model-service-choose-model](/img/docs/modelservice-choose-model.png)
+
+### 配置
+#### 通用配置
 
 1. **名称和命名空间**：输入模型服务的名称和命名空间。
-2. **模型源和名称**：
-   - 选择模型源：[Hugging Face](https://huggingface.co/models)、[ModelScope](https://modelscope.cn/models) 或 **本地路径**。
-   - 对于 Hugging Face 或 ModelScope 模型，请粘贴注册表中的模型名称（例如，`Qwen/Qwen2.5-0.5B-Instruct`）。
-   - 对于本地路径模型，请指定卷路径（例如，`/root/.cache/huggingface/hub/models--Qwen--Qwen2.5-0.5B-Instruct`）。
-3. **引擎参数（可选）**：如有需要，请在 **参数** 字段中添加参数，例如 `--dtype=half --max-model-len=4096`, [更多详情](https://docs.vllm.ai/en/latest/usage/engine_args.html)。
+2. **引擎参数（可选）**：如有需要，请在 **参数** 字段中添加参数，例如 `--dtype=half --max-model-len=4096`。[更多详情](https://docs.vllm.ai/en/latest/usage/engine_args.html)。
 4. **Hugging Face 配置（可选）**：
    - 对于需要身份验证的模型，可以使用[密钥凭证](#添加-hugging-face-token)。
    - 如需使用代理，可以添加自定义的 **Hugging Face 镜像 URL**（例如，`https://hf-mirror.com/`）。
@@ -26,7 +28,7 @@ LLMOS 平台通过 `ModelService` 简化了大语言模型(LLM)的部署, 为用
 
 ![model-service-create-general](/img/docs/modelservice-create-general.png)
 
-### 资源配置
+#### 资源配置
 
 :::note
 有关大语言模型的 GPU 资源需求，请参阅 [LLM numbers](https://github.com/ray-project/llm-numbers)。
@@ -41,7 +43,7 @@ LLMOS 平台通过 `ModelService` 简化了大语言模型(LLM)的部署, 为用
 
 ![model-service-resources](/img/docs/modelservice-create-resources.png)
 
-### 卷
+#### 卷
 
 1. **持久卷**：
    - 默认：一个挂载到 `/root/.cache` 的持久卷用于存储下载的模型。
@@ -56,7 +58,7 @@ LLMOS 平台通过 `ModelService` 简化了大语言模型(LLM)的部署, 为用
 
 ![modelservice-create-volumes](/img/docs/modelservice-create-volumes.png)
 
-### 节点调度
+#### 节点调度
 您可以为模型服务指定节点约束，使用节点标签，或者将其留空以在任何可用节点上运行。
 
 ![model-service-node-scheduling](/img/docs/modelservice-node-scheduling.png)
