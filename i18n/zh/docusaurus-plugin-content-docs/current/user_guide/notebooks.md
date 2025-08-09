@@ -26,6 +26,8 @@ Notebooks 提供了一种在 LLMOS 集群内运行 JupyterLab、RStudio 和 VS C
        - 最小值：最少使用 **1 个 vGPU**。
    - 如无需占用完整的 **GPU** 资源，可开启 vGPU 设备共享并指定 `vGPU` 内存大小（以 MiB 为单位）和 `vGPU Cores`（默认：100%）。
   ![Notebook-create-resources](/img/docs/notebook-create-resources.png)
+5. (可选) 选择[已发布的数据集](model_management/datasets.md#发布数据集), 以便在 notebook 中访问这些数据集。
+   ![notebook-create](/img/docs/notebook-add-dataset.png)
 
 **结果:** 当 Notebook 服务器配置完成并成功启动， 可点击 **Visit** 访问您的 Notebook 服务器。
    ![Notebook-visit](/img/docs/notebook-visit.png)
