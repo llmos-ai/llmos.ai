@@ -23,6 +23,8 @@ Getting started with notebooks is easy.
    ![notebook-create](/img/docs/notebook-create-general.png)
 1. Specify the name, namespace, resources and persistent storage(volume) setting of your notebook server.
    ![notebook-create](/img/docs/notebook-edit-resources.png)
+1. (Optional) Select [published datasets](model_management/datasets.md#publishing-datasets) which you want to access in your notebook.
+   ![notebook-create](/img/docs/notebook-add-dataset.png)
 1. Click **Visit** to visiting your notebook server once it has been provisioned.
    ![notebook-visit](/img/docs/notebook-visit.png)
 

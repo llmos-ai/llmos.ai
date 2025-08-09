@@ -35,6 +35,10 @@
     "message": "LLMOS 存储指南",
     "description": "The generated-index page description for category Storage in sidebar tutorialSidebar"
   },
+  "sidebar.tutorialSidebar.category.Model Management": {
+    "message": "模型管理",
+    "description": "The label for category Model Management in sidebar tutorialSidebar"
+  },
   "sidebar.tutorialSidebar.category.Advanced": {
     "message": "高级选项",
     "description": "The label for category Advanced in sidebar tutorialSidebar"

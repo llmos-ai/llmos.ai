@@ -9,16 +9,18 @@ The **LLMOS** platform makes it easy to serve machine learning models using the 
 
 ## Creating a Model Service
 
-You can create one or more model services from the **LLMOS Management > Model Services** page.
+You can create one or more model services from the **LLMOS Management > Model Services** page. There are two steps to create a model service:
 
-### General Configuration
+### Choose Model
+Choose a model from huggingface, modelscope or local. If you choose model from local, it will show the [local models](model_management/models.md#local-models).
+
+![model-service-choose-model](/img/docs/modelservice-choose-model.png)
+
+### Set Config
+#### General Configuration
 
 1. **Name and Namespace**: Enter the model service name and namespace.
-2. **Model Source and Name**:
-    - Select the model source: [Hugging Face](https://huggingface.co/models), [ModelScope](https://modelscope.cn/models), or a **Local Path**.
-    - For Hugging Face or ModelScope models, paste the model name from the registry (e.g., `Qwen/Qwen2.5-0.5B-Instruct`).
-    - For local path models, specify the volume path (e.g., `/root/.cache/huggingface/hub/models--Qwen--Qwen2.5-0.5B-Instruct`).
-3. **Engine Arguments (Optional)**: Add arguments like `--dtype=half --max-model-len=4096` in the **Arguments** field if needed. [More details](https://docs.vllm.ai/en/latest/usage/engine_args.html).
+2. **Engine Arguments (Optional)**: Add arguments like `--dtype=half --max-model-len=4096` in the **Arguments** field if needed. [More details](https://docs.vllm.ai/en/latest/usage/engine_args.html).
 4. **Hugging Face Configurations (Optional)**:
     - Use a [secret credential](#adding-a-hugging-face-token) for models that need authentication.
     - Add a custom **Hugging Face Mirror URL** if using a proxy (e.g., `https://hf-mirror.com/`).
@@ -26,7 +28,7 @@ You can create one or more model services from the **LLMOS Management > Model Se
 
 ![model-service-create-general](/img/docs/modelservice-create-general.png)
 
-### Resource Configuration
+#### Resource Configuration
 
 :::note
 For GPU resource requirements of large language models, see [LLM numbers](https://github.com/ray-project/llm-numbers).
@@ -41,7 +43,7 @@ For GPU resource requirements of large language models, see [LLM numbers](https:
 
 ![model-service-resources](/img/docs/modelservice-create-resources.png)
 
-### Volumes
+#### Volumes
 
 1. **Persistent Volume**:
     - Default: A persistent volume mounted at `/root/.cache` stores downloaded models.
@@ -56,7 +58,7 @@ For GPU resource requirements of large language models, see [LLM numbers](https:
 
 ![modelservice-create-volumes](/img/docs/modelservice-create-volumes.png)
 
-### Node Scheduling
+#### Node Scheduling
 You can specify node constraints for scheduling your model service using node labels, or leave it as default to run on any available node.
 
 ![model-service-node-scheduling](/img/docs/modelservice-node-scheduling.png)
