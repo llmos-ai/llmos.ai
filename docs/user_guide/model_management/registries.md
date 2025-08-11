@@ -33,10 +33,10 @@ You can create one or more registries from the **AI Infrastructure Management > 
 When configuring the S3 backend, you need to provide the following information:
 
 1. **Endpoint**: The S3-compatible endpoint URL (e.g., `s3.registry.com:5000`)
-   - Must use HTTPS protocol for security
-   - Ensure the endpoint is accessible from your LLMOS cluster
+   - Must s3 server use HTTPS protocol to ensure secure communication
+   - Verify that the endpoint is reachable from your LLMOS cluster
 
-2. **Bucket**: The S3 bucket name where your models and datasets will be stored (e.g., `bucket`)
+2. **Bucket**: The name of the S3 bucket where your models and datasets will be stored (e.g., `bucket`)
 
 3. **Use Https**: This checkbox is enabled by default and cannot be disabled, as only HTTPS connections are supported.
 
