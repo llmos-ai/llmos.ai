@@ -71,7 +71,7 @@ For programmatic uploads or integration with development workflows, LLMOS provid
 :::note
 **API Token Security**
 
-The API key will be expired in 30 minutes. You can visit the [API Keys](../user_and_auth/api-keys) page to manage your own API key for better security.
+The API key will be expired in 30 minutes. You can visit the [API Keys](../../user_and_auth/api-keys.md) page to manage your own API key for better security.
 :::
 
 ## Local Models
@@ -85,7 +85,7 @@ Local models are cached copies of registry-stored models that are pre-downloaded
 :::warning
 **Ceph Storage Requirement**
 
-Local model functionality depends on Ceph Storage. You must enable and configure Ceph Storage before using local models.
+Local model functionality depends on [Ceph Storage](../storage/system-storage.md). You must enable and configure Ceph Storage before using local models.
 :::
 
 ### Creating a Local Model
