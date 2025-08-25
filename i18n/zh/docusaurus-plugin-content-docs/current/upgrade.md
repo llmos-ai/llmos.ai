@@ -14,12 +14,12 @@ LLMOS不支持降级。
 
 ## 升级指南
 
-### 从 v0.2.0 升级到 v0.3.0
+### 从 v0.2.0 升级到 v0.3.1
 
-要将 LLMOS 集群从 `v0.2.0` 升级到 `v0.3.0`，你只需运行以下命令：
+要将 LLMOS 集群从 `v0.2.0` 升级到 `v0.3.1`，你只需运行以下命令：
 
 ```
-curl -sfL https://get-llmos.1block.ai/v0.3.0-upgrade.sh | sh -s -
+curl -sfL https://get-llmos.1block.ai/v0.3.1-upgrade.sh | sh -s -
 ```
 
 然后，你可以运行以下命令来检查升级状态，并等待升级状态变为 `Complete`：
@@ -42,7 +42,7 @@ kubectl get Upgrade.management.llmos.ai upgrade-v030-v1 -oyaml -w
     metadata:
       name: upgrade-v030-v1
     spec:
-      version: v0.3.0 # 要升级到的版本
+      version: v0.3.1 # 要升级到的版本
       kubernetesVersion: v1.33.1+k3s1
       registry: "ghcr.io/llmos-ai" # 如有需要，覆盖默认注册表（例如，私有注册表）
     EOF
@@ -145,7 +145,7 @@ kubectl apply -f - <<EOF
 apiVersion: management.llmos.ai/v1
 kind: Version
 metadata:
-   name: v0.3.0
+   name: v0.3.1
 spec:
    minUpgradableVersion: v0.2.0 # 可升级到此版本的最低版本
    kubernetesVersion: v1.33.1+k3s1 # 新版本中包含的更新的 k8s 版本

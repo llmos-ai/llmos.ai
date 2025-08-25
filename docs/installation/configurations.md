@@ -69,7 +69,7 @@ EOF
 ################################################################
 
 # LLMOS Operator version to be installed
-llmosOperatorVersion: v0.3.0
+llmosOperatorVersion: v0.3.1
 
 # LLMOS chart repository, set to "latest", "rc" or "dev". Defaults to latest.
 chartRepo: latest

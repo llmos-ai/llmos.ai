@@ -14,10 +14,10 @@ Downgrading LLMOS is not supported.
 
 ## Upgrade Guide
 
-### Upgrading from v0.2.0 to v0.3.0
-To Upgrade LLMOS cluster from `v0.2.0` to `v0.3.0`, you can simply run the following command:
+### Upgrading from v0.2.0 to v0.3.1
+To Upgrade LLMOS cluster from `v0.2.0` to `v0.3.1`, you can simply run the following command:
 ```
-curl -sfL https://get-llmos.1block.ai/v0.3.0-upgrade.sh | sh -s -
+curl -sfL https://get-llmos.1block.ai/v0.3.1-upgrade.sh | sh -s -
 ```
 
 And then, you can check the upgrade status by running the following command and wait for the upgrade state to become `Complete`:
@@ -38,7 +38,7 @@ kubectl get Upgrade.management.llmos.ai upgrade-v030-v1 -oyaml -w
     metadata:
       name: upgrade-v030-v1
     spec:
-      version: v0.3.0 # The version to upgrade to
+      version: v0.3.1 # The version to upgrade to
       kubernetesVersion: v1.33.1+k3s1
       registry: "ghcr.io/llmos-ai" # Override the default registry if needed(e.g., private registry)
     EOF
@@ -141,7 +141,7 @@ kubectl apply -f - <<EOF
 apiVersion: management.llmos.ai/v1
 kind: Version
 metadata:
-   name: v0.3.0
+   name: v0.3.1
 spec:
    minUpgradableVersion: v0.2.0 # The minimum version that can be upgraded to this version
    kubernetesVersion: v1.33.1+k3s1 # The newer k8s version that is included in the new version
