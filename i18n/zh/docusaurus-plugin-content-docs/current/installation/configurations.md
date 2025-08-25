@@ -69,7 +69,7 @@ EOF
 ################################################################
 
 # 要安装的 LLMOS Operator 版本
-llmosOperatorVersion: v0.3.0
+llmosOperatorVersion: v0.3.1
 
 # LLMOS Chart 仓库版本，设置为 "latest"、"rc" 或 "dev"。默认为 latest。
 chartRepo: latest
